@@ -1,0 +1,281 @@
+{
+  "Meta": {
+    "siteName": "Drwintech",
+    "title": "Drwintech — Solutions numériques innovantes en Afrique de l'Ouest",
+    "description": "Drwintech accompagne les entreprises ouest-africaines dans leur transformation digitale : conseil, développement, e-learning, audiovisuel, cybersécurité."
+  },
+  "Nav": {
+    "home": "Accueil",
+    "about": "À propos",
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "team": "Équipe",
+    "careers": "Carrière",
+    "contact": "Contact",
+    "clientArea": "Espace client",
+    "getQuote": "Demander un devis",
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu",
+    "toggleTheme": "Changer de thème",
+    "switchLanguage": "Changer de langue"
+  },
+  "Hero": {
+    "eyebrow": "Studio de transformation digitale · Afrique de l'Ouest",
+    "title": "Construisons ensemble votre <gradient>avenir numérique</gradient>",
+    "subtitle": "Stratégie, ingénierie logicielle, cybersécurité, e-learning et production audiovisuelle. Un partenaire unique pour vos ambitions digitales les plus exigeantes.",
+    "ctaPrimary": "Démarrer un projet",
+    "ctaSecondary": "Découvrir nos services",
+    "trustedBy": "Ils nous font confiance",
+    "stats": {
+      "products": "Produits livrés",
+      "clients": "Clients accompagnés",
+      "years": "Années d'expertise",
+      "satisfaction": "Satisfaction"
+    }
+  },
+  "Services": {
+    "eyebrow": "Nos expertises",
+    "title": "Six expertises, une <gradient>seule promesse</gradient>",
+    "subtitle": "De la stratégie à l'exécution, nous couvrons l'intégralité de la chaîne de valeur digitale pour vous permettre de scaler en confiance.",
+    "items": {
+      "consulting": {
+        "title": "Conseil & Transformation",
+        "description": "Diagnostic, stratégie digitale et conduite du changement. Nous structurons votre feuille de route et alignons vos équipes."
+      },
+      "it": {
+        "title": "IT, Cybersécurité & Maintenance",
+        "description": "Gestion des systèmes d'information, hardening, supervision et maintenance proactive pour une infrastructure fiable."
+      },
+      "software": {
+        "title": "Solutions sur mesure",
+        "description": "Applications métier, intégrations SI, plateformes SaaS. Code propre, scalable, livré en méthode agile."
+      },
+      "elearning": {
+        "title": "E-learning & Ingénierie pédagogique",
+        "description": "Plateformes LMS, modules SCORM, contenus interactifs. Nous formons vos équipes et vos publics avec impact."
+      },
+      "media": {
+        "title": "Production audiovisuelle",
+        "description": "Films corporate, motion design, podcasts, contenus social media. Une narration au service de vos enjeux."
+      },
+      "web": {
+        "title": "Sites & Plateformes web",
+        "description": "Sites vitrines, portails clients, intranets, e-commerce. Performants, accessibles, conçus pour convertir."
+      }
+    },
+    "learnMore": "En savoir plus"
+  },
+  "About": {
+    "eyebrow": "Qui sommes-nous",
+    "title": "Un studio fondé en 2021, déjà au service de <gradient>500+ clients</gradient>",
+    "paragraph1": "Drwintech est née d'une conviction : la transformation digitale de l'Afrique de l'Ouest passe par des partenaires locaux, exigeants et engagés. Depuis 2021, nous accompagnons institutions, PME et grands groupes dans la conception et le déploiement de solutions numériques à fort impact.",
+    "paragraph2": "Notre équipe pluridisciplinaire — stratèges, ingénieurs, designers, formateurs et créatifs — collabore en mode studio pour livrer rapidement, proprement, durablement.",
+    "values": {
+      "title": "Nos valeurs",
+      "excellence": {
+        "title": "Excellence opérationnelle",
+        "description": "Livraisons fiables, code maintenable, processus audités."
+      },
+      "proximity": {
+        "title": "Proximité client",
+        "description": "Interlocuteurs dédiés, transparence, réactivité."
+      },
+      "innovation": {
+        "title": "Innovation utile",
+        "description": "Les technologies servent vos enjeux, pas l'inverse."
+      },
+      "impact": {
+        "title": "Impact local",
+        "description": "Talents formés sur place, retombées économiques régionales."
+      }
+    }
+  },
+  "Portfolio": {
+    "eyebrow": "Réalisations",
+    "title": "Des projets qui <gradient>livrent des résultats</gradient>",
+    "subtitle": "Quelques-unes de nos collaborations récentes, du concept au déploiement.",
+    "viewAll": "Voir tous les projets",
+    "viewCase": "Étude de cas",
+    "filters": {
+      "all": "Tous",
+      "web": "Web",
+      "software": "Logiciel",
+      "elearning": "E-learning",
+      "media": "Audiovisuel",
+      "consulting": "Conseil"
+    },
+    "detail": {
+      "client": "Client",
+      "duration": "Durée",
+      "team": "Équipe",
+      "category": "Catégorie",
+      "challenge": "Le défi",
+      "approach": "Notre approche",
+      "method": "Notre méthode — le double diamant",
+      "methodIntro": "Chaque projet est piloté selon le <strong>double diamant</strong>, le standard du Design Council : deux temps de divergence (exploration large) alternés avec deux temps de convergence (choix structurants). Cela garantit qu'on conçoit la <em>bonne chose</em> avant de la concevoir <em>bien</em>.",
+      "phases": {
+        "discover": {
+          "label": "Discover",
+          "tag": "Diverger",
+          "hint": "On explore largement avant de juger."
+        },
+        "define": {
+          "label": "Define",
+          "tag": "Converger",
+          "hint": "On formule le vrai problème à résoudre."
+        },
+        "develop": {
+          "label": "Develop",
+          "tag": "Diverger",
+          "hint": "On imagine plusieurs solutions, on prototype."
+        },
+        "deliver": {
+          "label": "Deliver",
+          "tag": "Converger",
+          "hint": "On livre, on mesure, on améliore."
+        }
+      },
+      "rightProblem": "On conçoit la BONNE chose",
+      "rightSolution": "On la conçoit BIEN",
+      "outcomes": "Résultats",
+      "liveSite": "Voir le site",
+      "related": "Autres projets",
+      "back": "Retour au portfolio"
+    }
+  },
+  "Team": {
+    "eyebrow": "L'équipe",
+    "title": "Des profils <gradient>complémentaires</gradient>",
+    "subtitle": "Stratèges, ingénieurs, designers et créatifs réunis sous un même toit.",
+    "joinUs": "Nous rejoindre"
+  },
+  "Testimonials": {
+    "eyebrow": "Témoignages",
+    "title": "Ce que nos clients en <gradient>disent</gradient>"
+  },
+  "Process": {
+    "eyebrow": "Notre méthode",
+    "title": "De l'idée au lancement, en <gradient>quatre temps</gradient>",
+    "steps": {
+      "discover": {
+        "title": "Discover",
+        "description": "Cadrage des enjeux, ateliers, audit existant, définition des KPIs."
+      },
+      "design": {
+        "title": "Design",
+        "description": "Architecture, prototypes interactifs, design system, validation utilisateur."
+      },
+      "build": {
+        "title": "Build",
+        "description": "Développement itératif, revues hebdomadaires, intégration continue."
+      },
+      "scale": {
+        "title": "Scale",
+        "description": "Mise en production, formation, support, optimisation continue."
+      }
+    }
+  },
+  "CTA": {
+    "title": "Prêt à passer à l'échelle ?",
+    "subtitle": "Parlons de votre projet. Premier échange gratuit, sans engagement, sous 24h.",
+    "primary": "Démarrer un projet",
+    "secondary": "Nous écrire sur WhatsApp"
+  },
+  "Footer": {
+    "tagline": "Création de solutions numériques innovantes en Afrique de l'Ouest.",
+    "rights": "Tous droits réservés.",
+    "explore": "Explorer",
+    "company": "Entreprise",
+    "legal": "Légal",
+    "follow": "Nous suivre",
+    "newsletter": "Lettre d'information",
+    "newsletterDesc": "Nos insights tech, une fois par mois. Pas de spam.",
+    "subscribe": "S'inscrire",
+    "emailPlaceholder": "votre@email.com",
+    "links": {
+      "privacy": "Confidentialité",
+      "terms": "Conditions",
+      "cookies": "Cookies"
+    },
+    "address": "Cotonou, Bénin"
+  },
+  "Contact": {
+    "eyebrow": "Contact",
+    "title": "Parlons de votre <gradient>projet</gradient>",
+    "subtitle": "Décrivez-nous votre besoin, nous revenons vers vous sous 24h ouvrées.",
+    "form": {
+      "name": "Nom complet",
+      "email": "Email professionnel",
+      "company": "Entreprise",
+      "phone": "Téléphone (optionnel)",
+      "subject": "Sujet",
+      "message": "Votre message",
+      "budget": "Budget estimé",
+      "submit": "Envoyer le message",
+      "sending": "Envoi en cours...",
+      "success": "Message reçu, merci. Nous revenons vers vous très vite.",
+      "error": "Une erreur est survenue. Réessayez ou écrivez-nous sur WhatsApp."
+    },
+    "info": {
+      "address": "Adresse",
+      "addressValue": "Cotonou, République du Bénin",
+      "email": "Email",
+      "phone": "Téléphone",
+      "whatsapp": "WhatsApp",
+      "hours": "Horaires",
+      "hoursValue": "Lun — Ven · 8h — 18h GMT"
+    }
+  },
+  "Careers": {
+    "eyebrow": "Carrières",
+    "title": "Construisez l'avenir <gradient>avec nous</gradient>",
+    "subtitle": "Rejoignez une équipe ambitieuse, bienveillante, qui livre des projets à fort impact.",
+    "noOpenings": "Aucune offre ouverte pour le moment. Envoyez-nous une candidature spontanée.",
+    "apply": "Postuler",
+    "spontaneousApplication": "Candidature spontanée",
+    "perks": {
+      "title": "Pourquoi nous rejoindre",
+      "growth": { "title": "Croissance", "description": "Formations, conférences, projets variés." },
+      "remote": { "title": "Hybride", "description": "Bureau à Cotonou + remote flexible." },
+      "team": { "title": "Équipe", "description": "Profils seniors, mentoring, partages." },
+      "impact": { "title": "Impact", "description": "Projets qui transforment la région." }
+    }
+  },
+  "ClientArea": {
+    "title": "Espace client",
+    "subtitle": "Suivez vos projets, factures et tickets de support en un coup d'œil.",
+    "login": "Se connecter",
+    "register": "Créer un compte",
+    "logout": "Déconnexion",
+    "dashboard": "Tableau de bord",
+    "projects": "Mes projets",
+    "invoices": "Factures",
+    "support": "Support",
+    "settings": "Paramètres",
+    "welcome": "Bienvenue {name}"
+  },
+  "Auth": {
+    "signInTitle": "Se connecter à votre espace",
+    "signInSubtitle": "Accédez à vos projets, factures et tickets.",
+    "email": "Email",
+    "password": "Mot de passe",
+    "rememberMe": "Se souvenir de moi",
+    "forgot": "Mot de passe oublié ?",
+    "submit": "Connexion",
+    "noAccount": "Pas encore de compte ?",
+    "createAccount": "Créer un compte",
+    "haveAccount": "Déjà un compte ?",
+    "signIn": "Se connecter",
+    "registerTitle": "Créer votre compte client",
+    "name": "Nom complet",
+    "invalidCredentials": "Email ou mot de passe incorrect."
+  },
+  "Common": {
+    "loading": "Chargement…",
+    "comingSoon": "Bientôt disponible",
+    "back": "Retour",
+    "next": "Suivant",
+    "previous": "Précédent",
+    "readMore": "Lire la suite"
+  }
+}

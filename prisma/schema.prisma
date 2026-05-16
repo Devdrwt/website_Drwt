@@ -1,0 +1,386 @@
+// Drwintech — Prisma schema
+// MySQL via XAMPP
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// =====================================================
+// Auth.js / NextAuth — required tables
+// =====================================================
+
+enum UserRole {
+  ADMIN
+  CLIENT
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String    @unique
+  emailVerified DateTime?
+  image         String?
+  password      String? // hashed (bcrypt) for credentials provider
+  role          UserRole  @default(CLIENT)
+  company       String?
+  phone         String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  accounts     Account[]
+  sessions     Session[]
+  projects     Project[]      @relation("ProjectClient")
+  invoices     Invoice[]
+  tickets      SupportTicket[]
+  applications JobApplication[]
+}
+
+model Account {
+  id                       String  @id @default(cuid())
+  userId                   String
+  type                     String
+  provider                 String
+  providerAccountId        String
+  refresh_token            String? @db.Text
+  access_token             String? @db.Text
+  expires_at               Int?
+  token_type               String?
+  scope                    String?
+  id_token                 String? @db.Text
+  session_state            String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@index([userId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+// =====================================================
+// CMS — public site content (bilingual via *_fr / *_en)
+// =====================================================
+
+enum ServiceCategory {
+  CONSULTING
+  IT_SECURITY
+  SOFTWARE
+  ELEARNING
+  MEDIA
+  WEB
+}
+
+model Service {
+  id           String          @id @default(cuid())
+  slug         String          @unique
+  category     ServiceCategory
+  icon         String // lucide icon name
+  title_fr     String
+  title_en     String
+  subtitle_fr  String?         @db.Text
+  subtitle_en  String?         @db.Text
+  description_fr String        @db.LongText
+  description_en String        @db.LongText
+  features_fr  Json? // string[]
+  features_en  Json?
+  coverImage   String?
+  order        Int             @default(0)
+  published    Boolean         @default(true)
+  createdAt    DateTime        @default(now())
+  updatedAt    DateTime        @updatedAt
+
+  projects Project[]
+}
+
+model Project {
+  id            String   @id @default(cuid())
+  slug          String   @unique
+  title_fr      String
+  title_en      String
+  client        String? // client name shown publicly
+  category      ServiceCategory
+  summary_fr    String   @db.Text
+  summary_en    String   @db.Text
+  content_fr    String   @db.LongText
+  content_en    String   @db.LongText
+
+  // Double Diamond — Design Thinking framework (4 phases × 2 locales)
+  challenge_fr  String?  @db.Text // contexte / problématique
+  challenge_en  String?  @db.Text
+  discover_fr   String?  @db.LongText // Discover · diverger (recherche, immersion)
+  discover_en   String?  @db.LongText
+  define_fr     String?  @db.LongText // Define · converger (problématique, insights)
+  define_en     String?  @db.LongText
+  develop_fr    String?  @db.LongText // Develop · diverger (idéation, prototypage)
+  develop_en    String?  @db.LongText
+  deliver_fr    String?  @db.LongText // Deliver · converger (production, mise à l'échelle)
+  deliver_en    String?  @db.LongText
+  outcomes      Json? // {label_fr, label_en, value}[] — résultats chiffrés
+  duration      String? // ex: "6 mois"
+  teamSize      Int? // ex: 5
+
+  coverImage    String
+  gallery       Json? // string[]
+  tags          Json? // string[]
+  liveUrl       String?
+  featured      Boolean  @default(false)
+  published     Boolean  @default(true)
+  publishedAt   DateTime @default(now())
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  serviceId     String?
+  service       Service? @relation(fields: [serviceId], references: [id])
+  clientUserId  String?
+  clientUser    User?    @relation("ProjectClient", fields: [clientUserId], references: [id])
+
+  milestones    ProjectMilestone[]
+
+  @@index([category])
+  @@index([featured])
+  @@index([serviceId])
+  @@index([clientUserId])
+}
+
+enum MilestoneStatus {
+  PENDING
+  IN_PROGRESS
+  DONE
+  BLOCKED
+}
+
+model ProjectMilestone {
+  id        String          @id @default(cuid())
+  projectId String
+  title     String
+  status    MilestoneStatus @default(PENDING)
+  dueDate   DateTime?
+  order     Int             @default(0)
+  createdAt DateTime        @default(now())
+  updatedAt DateTime        @updatedAt
+
+  project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@index([projectId])
+}
+
+model TeamMember {
+  id        String   @id @default(cuid())
+  slug      String   @unique
+  name      String
+  role_fr   String
+  role_en   String
+  bio_fr    String?  @db.Text
+  bio_en    String?  @db.Text
+  photo     String?
+  linkedin  String?
+  twitter   String?
+  github    String?
+  email     String?
+  order     Int      @default(0)
+  published Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Testimonial {
+  id          String   @id @default(cuid())
+  author      String
+  role_fr     String
+  role_en     String
+  company     String?
+  avatar      String?
+  quote_fr    String   @db.Text
+  quote_en    String   @db.Text
+  rating      Int      @default(5)
+  featured    Boolean  @default(false)
+  published   Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+enum JobType {
+  FULL_TIME
+  PART_TIME
+  CONTRACT
+  INTERNSHIP
+}
+
+model JobOpening {
+  id              String   @id @default(cuid())
+  slug            String   @unique
+  title_fr        String
+  title_en        String
+  department      String
+  location        String
+  type            JobType  @default(FULL_TIME)
+  remote          Boolean  @default(false)
+  description_fr  String   @db.LongText
+  description_en  String   @db.LongText
+  requirements_fr Json? // string[]
+  requirements_en Json?
+  published       Boolean  @default(true)
+  closesAt        DateTime?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  applications JobApplication[]
+}
+
+enum ApplicationStatus {
+  RECEIVED
+  REVIEWING
+  INTERVIEW
+  OFFER
+  REJECTED
+  WITHDRAWN
+}
+
+model JobApplication {
+  id           String            @id @default(cuid())
+  jobId        String?
+  userId       String?
+  fullName     String
+  email        String
+  phone        String?
+  coverLetter  String?           @db.Text
+  resumeUrl    String?
+  portfolioUrl String?
+  status       ApplicationStatus @default(RECEIVED)
+  notes        String?           @db.Text
+  createdAt    DateTime          @default(now())
+  updatedAt    DateTime          @updatedAt
+
+  job  JobOpening? @relation(fields: [jobId], references: [id], onDelete: SetNull)
+  user User?       @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([jobId])
+  @@index([userId])
+  @@index([status])
+}
+
+model ContactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  company   String?
+  phone     String?
+  subject   String?
+  budget    String?
+  message   String   @db.Text
+  source    String? // page / referrer
+  handled   Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@index([handled])
+  @@index([createdAt])
+}
+
+model NewsletterSubscriber {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  locale    String   @default("fr")
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+}
+
+// =====================================================
+// Client area — projects, invoices, support
+// =====================================================
+
+enum InvoiceStatus {
+  DRAFT
+  SENT
+  PAID
+  OVERDUE
+  CANCELLED
+}
+
+model Invoice {
+  id          String        @id @default(cuid())
+  number      String        @unique // INV-2026-0001
+  userId      String
+  amount      Decimal       @db.Decimal(12, 2)
+  currency    String        @default("XOF")
+  status      InvoiceStatus @default(DRAFT)
+  issuedAt    DateTime      @default(now())
+  dueAt       DateTime?
+  paidAt      DateTime?
+  pdfUrl      String?
+  description String?       @db.Text
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([status])
+}
+
+enum TicketStatus {
+  OPEN
+  IN_PROGRESS
+  WAITING_CUSTOMER
+  RESOLVED
+  CLOSED
+}
+
+enum TicketPriority {
+  LOW
+  NORMAL
+  HIGH
+  URGENT
+}
+
+model SupportTicket {
+  id          String         @id @default(cuid())
+  reference   String         @unique // TCK-000123
+  userId      String
+  subject     String
+  description String         @db.Text
+  status      TicketStatus   @default(OPEN)
+  priority    TicketPriority @default(NORMAL)
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+
+  user     User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  messages TicketMessage[]
+
+  @@index([userId])
+  @@index([status])
+}
+
+model TicketMessage {
+  id        String   @id @default(cuid())
+  ticketId  String
+  authorId  String // user id (client or admin)
+  body      String   @db.Text
+  fromStaff Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  ticket SupportTicket @relation(fields: [ticketId], references: [id], onDelete: Cascade)
+
+  @@index([ticketId])
+}

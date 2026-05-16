@@ -1,0 +1,24 @@
+export const siteConfig = {
+  name: "Drwintech",
+  legalName: "Drwintech Inc.",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
+  email: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "contact@drwintech.com",
+  whatsapp: process.env.NEXT_PUBLIC_WHATSAPP ?? "+22962707002",
+  whatsappUrl: `https://wa.me/${(process.env.NEXT_PUBLIC_WHATSAPP ?? "+22962707002").replace(/[^0-9]/g, "")}`,
+  city: "Cotonou",
+  country: "Bénin",
+  founded: 2021,
+  social: {
+    facebook: "https://www.facebook.com/drwintech",
+    linkedin: "https://www.linkedin.com/company/drwintech",
+    tiktok:   "https://www.tiktok.com/@drwintech",
+    instagram: "https://www.instagram.com/drwintech",
+    twitter:  "https://x.com/drwintech",
+  },
+  stats: {
+    products: 2000,
+    clients: 500,
+    years: new Date().getFullYear() - 2021,
+    satisfaction: 98,
+  },
+} as const;

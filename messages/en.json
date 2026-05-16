@@ -1,0 +1,281 @@
+{
+  "Meta": {
+    "siteName": "Drwintech",
+    "title": "Drwintech — Innovative digital solutions in West Africa",
+    "description": "Drwintech partners with West African organizations to drive their digital transformation: consulting, software, e-learning, media, cybersecurity."
+  },
+  "Nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "team": "Team",
+    "careers": "Careers",
+    "contact": "Contact",
+    "clientArea": "Client area",
+    "getQuote": "Get a quote",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "toggleTheme": "Toggle theme",
+    "switchLanguage": "Switch language"
+  },
+  "Hero": {
+    "eyebrow": "Digital transformation studio · West Africa",
+    "title": "Let's engineer your <gradient>digital future</gradient>",
+    "subtitle": "Strategy, software engineering, cybersecurity, e-learning and media production. A single partner for your most demanding digital ambitions.",
+    "ctaPrimary": "Start a project",
+    "ctaSecondary": "Explore our services",
+    "trustedBy": "Trusted by",
+    "stats": {
+      "products": "Products shipped",
+      "clients": "Clients served",
+      "years": "Years of expertise",
+      "satisfaction": "Satisfaction"
+    }
+  },
+  "Services": {
+    "eyebrow": "Our expertise",
+    "title": "Six disciplines, <gradient>one promise</gradient>",
+    "subtitle": "From strategy to execution, we cover the entire digital value chain so you can scale with confidence.",
+    "items": {
+      "consulting": {
+        "title": "Consulting & Transformation",
+        "description": "Diagnostics, digital strategy and change management. We shape your roadmap and align your teams."
+      },
+      "it": {
+        "title": "IT, Cybersecurity & Maintenance",
+        "description": "Information systems management, hardening, monitoring and proactive maintenance for a reliable infrastructure."
+      },
+      "software": {
+        "title": "Custom software",
+        "description": "Business apps, ERP integrations, SaaS platforms. Clean, scalable code, delivered agile."
+      },
+      "elearning": {
+        "title": "E-learning & Pedagogy",
+        "description": "LMS platforms, SCORM modules, interactive content. We empower your teams and audiences."
+      },
+      "media": {
+        "title": "Media production",
+        "description": "Corporate films, motion design, podcasts, social content. Storytelling that serves your goals."
+      },
+      "web": {
+        "title": "Web & Portals",
+        "description": "Marketing sites, client portals, intranets, e-commerce. Fast, accessible, built to convert."
+      }
+    },
+    "learnMore": "Learn more"
+  },
+  "About": {
+    "eyebrow": "Who we are",
+    "title": "A studio founded in 2021, already trusted by <gradient>500+ clients</gradient>",
+    "paragraph1": "Drwintech was born from a conviction: West Africa's digital transformation requires local, demanding, deeply committed partners. Since 2021, we've helped institutions, SMBs and large groups design and ship high-impact digital solutions.",
+    "paragraph2": "Our multidisciplinary team — strategists, engineers, designers, educators and creatives — operates studio-style to deliver fast, cleanly, and built to last.",
+    "values": {
+      "title": "Our values",
+      "excellence": {
+        "title": "Operational excellence",
+        "description": "Reliable delivery, maintainable code, audited processes."
+      },
+      "proximity": {
+        "title": "Client proximity",
+        "description": "Dedicated leads, transparency, responsiveness."
+      },
+      "innovation": {
+        "title": "Useful innovation",
+        "description": "Tech serves your goals, not the other way around."
+      },
+      "impact": {
+        "title": "Local impact",
+        "description": "Local talent grown on the job, regional economic spillover."
+      }
+    }
+  },
+  "Portfolio": {
+    "eyebrow": "Selected work",
+    "title": "Projects that <gradient>ship results</gradient>",
+    "subtitle": "A few of our recent collaborations, from concept to launch.",
+    "viewAll": "View all projects",
+    "viewCase": "Case study",
+    "filters": {
+      "all": "All",
+      "web": "Web",
+      "software": "Software",
+      "elearning": "E-learning",
+      "media": "Media",
+      "consulting": "Consulting"
+    },
+    "detail": {
+      "client": "Client",
+      "duration": "Duration",
+      "team": "Team",
+      "category": "Category",
+      "challenge": "The challenge",
+      "approach": "Our approach",
+      "method": "Our method — the double diamond",
+      "methodIntro": "Every project is run with the <strong>double diamond</strong>, the Design Council standard: two divergent phases (broad exploration) alternated with two convergent phases (structural choices). It ensures we design the <em>right thing</em> before designing it <em>right</em>.",
+      "phases": {
+        "discover": {
+          "label": "Discover",
+          "tag": "Diverge",
+          "hint": "Explore widely before judging."
+        },
+        "define": {
+          "label": "Define",
+          "tag": "Converge",
+          "hint": "Frame the real problem to solve."
+        },
+        "develop": {
+          "label": "Develop",
+          "tag": "Diverge",
+          "hint": "Imagine multiple solutions, prototype."
+        },
+        "deliver": {
+          "label": "Deliver",
+          "tag": "Converge",
+          "hint": "Ship, measure, iterate."
+        }
+      },
+      "rightProblem": "Designing the RIGHT thing",
+      "rightSolution": "Designing it RIGHT",
+      "outcomes": "Outcomes",
+      "liveSite": "Visit site",
+      "related": "Other projects",
+      "back": "Back to portfolio"
+    }
+  },
+  "Team": {
+    "eyebrow": "The team",
+    "title": "Complementary <gradient>profiles</gradient>",
+    "subtitle": "Strategists, engineers, designers and creatives under one roof.",
+    "joinUs": "Join us"
+  },
+  "Testimonials": {
+    "eyebrow": "Testimonials",
+    "title": "What our clients <gradient>say</gradient>"
+  },
+  "Process": {
+    "eyebrow": "Our method",
+    "title": "From idea to launch, in <gradient>four stages</gradient>",
+    "steps": {
+      "discover": {
+        "title": "Discover",
+        "description": "Framing, workshops, audit of existing systems, KPI definition."
+      },
+      "design": {
+        "title": "Design",
+        "description": "Architecture, interactive prototypes, design system, user validation."
+      },
+      "build": {
+        "title": "Build",
+        "description": "Iterative development, weekly reviews, continuous integration."
+      },
+      "scale": {
+        "title": "Scale",
+        "description": "Production rollout, training, support, ongoing optimization."
+      }
+    }
+  },
+  "CTA": {
+    "title": "Ready to scale?",
+    "subtitle": "Let's talk about your project. First chat free, no commitment, within 24 hours.",
+    "primary": "Start a project",
+    "secondary": "Message us on WhatsApp"
+  },
+  "Footer": {
+    "tagline": "Building innovative digital solutions across West Africa.",
+    "rights": "All rights reserved.",
+    "explore": "Explore",
+    "company": "Company",
+    "legal": "Legal",
+    "follow": "Follow us",
+    "newsletter": "Newsletter",
+    "newsletterDesc": "Our tech insights, once a month. No spam.",
+    "subscribe": "Subscribe",
+    "emailPlaceholder": "you@email.com",
+    "links": {
+      "privacy": "Privacy",
+      "terms": "Terms",
+      "cookies": "Cookies"
+    },
+    "address": "Cotonou, Benin"
+  },
+  "Contact": {
+    "eyebrow": "Contact",
+    "title": "Tell us about your <gradient>project</gradient>",
+    "subtitle": "Describe what you need, we'll get back within one business day.",
+    "form": {
+      "name": "Full name",
+      "email": "Work email",
+      "company": "Company",
+      "phone": "Phone (optional)",
+      "subject": "Subject",
+      "message": "Your message",
+      "budget": "Estimated budget",
+      "submit": "Send message",
+      "sending": "Sending…",
+      "success": "Message received, thank you. We'll get back to you shortly.",
+      "error": "Something went wrong. Try again or message us on WhatsApp."
+    },
+    "info": {
+      "address": "Address",
+      "addressValue": "Cotonou, Republic of Benin",
+      "email": "Email",
+      "phone": "Phone",
+      "whatsapp": "WhatsApp",
+      "hours": "Hours",
+      "hoursValue": "Mon — Fri · 8am — 6pm GMT"
+    }
+  },
+  "Careers": {
+    "eyebrow": "Careers",
+    "title": "Build the future <gradient>with us</gradient>",
+    "subtitle": "Join an ambitious, kind team shipping high-impact projects.",
+    "noOpenings": "No open roles right now. Send us a spontaneous application.",
+    "apply": "Apply",
+    "spontaneousApplication": "Spontaneous application",
+    "perks": {
+      "title": "Why join",
+      "growth": { "title": "Growth", "description": "Training, conferences, diverse projects." },
+      "remote": { "title": "Hybrid", "description": "Cotonou office + flexible remote." },
+      "team": { "title": "Team", "description": "Senior profiles, mentoring, knowledge sharing." },
+      "impact": { "title": "Impact", "description": "Projects that transform the region." }
+    }
+  },
+  "ClientArea": {
+    "title": "Client area",
+    "subtitle": "Track your projects, invoices and support tickets at a glance.",
+    "login": "Sign in",
+    "register": "Create account",
+    "logout": "Sign out",
+    "dashboard": "Dashboard",
+    "projects": "My projects",
+    "invoices": "Invoices",
+    "support": "Support",
+    "settings": "Settings",
+    "welcome": "Welcome {name}"
+  },
+  "Auth": {
+    "signInTitle": "Sign in to your account",
+    "signInSubtitle": "Access your projects, invoices and tickets.",
+    "email": "Email",
+    "password": "Password",
+    "rememberMe": "Remember me",
+    "forgot": "Forgot password?",
+    "submit": "Sign in",
+    "noAccount": "No account yet?",
+    "createAccount": "Create account",
+    "haveAccount": "Already have an account?",
+    "signIn": "Sign in",
+    "registerTitle": "Create your client account",
+    "name": "Full name",
+    "invalidCredentials": "Invalid email or password."
+  },
+  "Common": {
+    "loading": "Loading…",
+    "comingSoon": "Coming soon",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "readMore": "Read more"
+  }
+}
