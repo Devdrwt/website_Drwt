@@ -45,7 +45,7 @@ export function PageHeader({
   return (
     <section
       ref={ref}
-      className={`relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden border-b border-[var(--border)] ${
+      className={`relative isolate pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden border-b border-[var(--border)] ${
         hasImage ? "bg-foreground" : "bg-[var(--bg-muted)]"
       }`}
       style={hasImage ? { minHeight: "70vh" } : undefined}
