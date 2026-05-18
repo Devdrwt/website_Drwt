@@ -41,6 +41,12 @@ yarn-error.log*
 /public/videos/*.mp4
 /public/videos/*.webm
 
+# Hero photos (download via `npm run assets:fetch`)
+/public/images/heroes/*.jpg
+/public/images/heroes/*.jpeg
+/public/images/heroes/*.png
+/public/images/heroes/*.webp
+
 # vercel
 .vercel
 

@@ -13,7 +13,9 @@
     "db:studio": "prisma studio",
     "db:seed": "tsx prisma/seed.ts",
     "videos:fetch": "node scripts/download-videos.mjs",
-    "postinstall": "node scripts/download-videos.mjs || true"
+    "images:fetch": "node scripts/download-images.mjs",
+    "assets:fetch": "node scripts/download-videos.mjs && node scripts/download-images.mjs",
+    "postinstall": "node scripts/download-videos.mjs && node scripts/download-images.mjs || true"
   },
   "dependencies": {
     "@auth/prisma-adapter": "^2.11.2",
