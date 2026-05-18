@@ -39,6 +39,7 @@ export default async function CareersPage({
   return (
     <>
       <PageHeader
+        variant="careers"
         eyebrow={t("eyebrow")}
         title={t.rich("title", { gradient: (c) => <GradientText>{c}</GradientText> })}
         subtitle={t("subtitle")}

@@ -41,6 +41,7 @@ export default async function PortfolioPage({
   return (
     <>
       <PageHeader
+        variant="portfolio"
         eyebrow={t("eyebrow")}
         title={t.rich("title", { gradient: (c) => <GradientText>{c}</GradientText> })}
         subtitle={t("subtitle")}

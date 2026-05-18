@@ -6,6 +6,9 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { GradientText } from "./gradient-text";
 import { FloatingShapes } from "../animations/floating-shapes";
 import { ScrollIndicator } from "../animations/scroll-indicator";
+import { HeroVisual } from "../animations/hero-visual";
+
+type Variant = "about" | "services" | "portfolio" | "team" | "careers" | "contact";
 
 export function PageHeader({
   eyebrow,
@@ -13,12 +16,14 @@ export function PageHeader({
   subtitle,
   children,
   scrollHint = true,
+  variant,
 }: {
   eyebrow?: string;
   title: ReactNode;
   subtitle?: ReactNode;
   children?: ReactNode;
   scrollHint?: boolean;
+  variant?: Variant;
 }) {
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
@@ -52,46 +57,63 @@ export function PageHeader({
       </motion.div>
 
       <motion.div style={{ y, opacity }} className="container-page relative">
-        <div className="max-w-4xl">
-          {eyebrow && (
-            <motion.p
-              initial={{ opacity: 0, y: 12 }}
+        <div className={
+          variant
+            ? "grid gap-12 lg:grid-cols-[1.2fr_1fr] lg:items-center"
+            : ""
+        }>
+          <div className={variant ? "max-w-2xl" : "max-w-4xl"}>
+            {eyebrow && (
+              <motion.p
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="eyebrow-line mb-5"
+              >
+                {eyebrow}
+              </motion.p>
+            )}
+
+            <motion.h1
+              initial={{ opacity: 0, y: 28 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="eyebrow-line mb-5"
+              transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+              className="heading-display text-balance text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-foreground"
             >
-              {eyebrow}
-            </motion.p>
-          )}
+              {title}
+            </motion.h1>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 28 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="heading-display text-balance text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-foreground"
-          >
-            {title}
-          </motion.h1>
+            {subtitle && (
+              <motion.p
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="mt-6 text-balance text-base md:text-lg text-fg-muted leading-relaxed max-w-2xl"
+              >
+                {subtitle}
+              </motion.p>
+            )}
 
-          {subtitle && (
-            <motion.p
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="mt-6 text-balance text-base md:text-lg text-fg-muted leading-relaxed max-w-2xl"
-            >
-              {subtitle}
-            </motion.p>
-          )}
+            {children && (
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.45 }}
+                className="mt-10"
+              >
+                {children}
+              </motion.div>
+            )}
+          </div>
 
-          {children && (
+          {variant && (
             <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.45 }}
-              className="mt-10"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              className="hidden lg:block"
             >
-              {children}
+              <HeroVisual variant={variant} />
             </motion.div>
           )}
         </div>
