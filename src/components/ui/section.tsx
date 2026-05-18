@@ -2,17 +2,10 @@ import * as React from "react";
 import { cn } from "@/lib/cn";
 
 export function Section({
-  className,
-  children,
-  id,
-  ...props
+  className, children, id, ...props
 }: React.HTMLAttributes<HTMLElement>) {
   return (
-    <section
-      id={id}
-      className={cn("relative py-20 md:py-28 lg:py-36", className)}
-      {...props}
-    >
+    <section id={id} className={cn("relative section-pad", className)} {...props}>
       {children}
     </section>
   );
@@ -22,7 +15,7 @@ export function SectionHeader({
   eyebrow,
   title,
   subtitle,
-  align = "center",
+  align = "left",
   className,
 }: {
   eyebrow?: React.ReactNode;
@@ -32,23 +25,17 @@ export function SectionHeader({
   className?: string;
 }) {
   return (
-    <div
-      className={cn(
-        "mb-14 md:mb-20 max-w-3xl",
-        align === "center" ? "mx-auto text-center" : "",
-        className
-      )}
-    >
+    <div className={cn("max-w-3xl mb-14 md:mb-20", align === "center" ? "mx-auto text-center" : "", className)}>
       {eyebrow && (
-        <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-brand-600 dark:text-brand-400">
+        <p className={cn("eyebrow-line mb-5", align === "center" ? "justify-center" : "")}>
           {eyebrow}
         </p>
       )}
-      <h2 className="text-balance text-3xl md:text-4xl lg:text-5xl font-semibold leading-[1.05] tracking-tight">
+      <h2 className="heading-display text-balance text-4xl md:text-5xl lg:text-6xl text-foreground">
         {title}
       </h2>
       {subtitle && (
-        <p className="mt-6 text-balance text-base md:text-lg text-fg-muted leading-relaxed">
+        <p className="mt-6 text-balance text-base md:text-lg text-fg-muted leading-relaxed max-w-2xl">
           {subtitle}
         </p>
       )}

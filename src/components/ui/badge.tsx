@@ -4,21 +4,27 @@ import { cn } from "@/lib/cn";
 export function Badge({
   className,
   children,
-  tone = "brand",
+  tone = "neutral",
   ...props
-}: React.HTMLAttributes<HTMLSpanElement> & { tone?: "brand" | "neutral" | "accent" }) {
+}: React.HTMLAttributes<HTMLSpanElement> & {
+  tone?: "brand" | "neutral" | "accent" | "dark" | "light";
+}) {
   const tones = {
     brand:
-      "border-brand-500/30 bg-brand-500/10 text-brand-700 dark:text-brand-300",
+      "border-brand-200 bg-brand-50 text-brand-700 dark:border-brand-700 dark:bg-brand-950 dark:text-brand-300",
     neutral:
-      "border-[var(--border-strong)] bg-foreground/[0.04] text-fg-muted",
+      "border-[var(--border-strong)] text-foreground bg-[var(--bg-muted)]",
     accent:
-      "border-transparent text-white bg-[linear-gradient(120deg,var(--accent-from),var(--accent-via),var(--accent-to))]",
+      "border-transparent text-white bg-brand-600",
+    dark:
+      "border-transparent bg-foreground text-[var(--bg)]",
+    light:
+      "border-white/30 bg-white/10 text-white backdrop-blur",
   } as const;
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium tracking-wide uppercase",
+        "inline-flex items-center gap-1.5 rounded-md border px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.1em]",
         tones[tone],
         className
       )}

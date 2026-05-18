@@ -1,6 +1,7 @@
 export const siteConfig = {
   name: "Drwintech",
-  legalName: "Drwintech Inc.",
+  legalName: "Drwintech SAS",
+  tagline: "Solutions Digitales Innovantes",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   email: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "contact@drwintech.com",
   whatsapp: process.env.NEXT_PUBLIC_WHATSAPP ?? "+22962707002",
@@ -9,11 +10,12 @@ export const siteConfig = {
   country: "Bénin",
   founded: 2021,
   social: {
-    facebook: "https://www.facebook.com/drwintech",
-    linkedin: "https://www.linkedin.com/company/drwintech",
-    tiktok:   "https://www.tiktok.com/@drwintech",
+    facebook:  "https://www.facebook.com/drwintech",
+    linkedin:  "https://www.linkedin.com/company/drwintech",
+    youtube:   "https://www.youtube.com/@drwintech",
+    twitter:   "https://twitter.com/drwintech",
+    tiktok:    "https://www.tiktok.com/@drwintech",
     instagram: "https://www.instagram.com/drwintech",
-    twitter:  "https://x.com/drwintech",
   },
   stats: {
     products: 2000,

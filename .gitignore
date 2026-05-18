@@ -37,6 +37,10 @@ yarn-error.log*
 # Claude Code local settings
 .claude/
 
+# Large video assets (download via `npm run videos:fetch`)
+/public/videos/*.mp4
+/public/videos/*.webm
+
 # vercel
 .vercel
 

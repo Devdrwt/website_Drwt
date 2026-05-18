@@ -5,6 +5,7 @@ import { LogosMarquee } from "@/components/sections/logos-marquee";
 import { ServicesSection } from "@/components/sections/services";
 import { AboutPreview } from "@/components/sections/about-preview";
 import { PortfolioPreview } from "@/components/sections/portfolio-preview";
+import { HorizontalProjects } from "@/components/sections/horizontal-projects";
 import { ProcessSection } from "@/components/sections/process";
 import { Testimonials } from "@/components/sections/testimonials";
 import { CTA } from "@/components/sections/cta";
@@ -25,6 +26,7 @@ export default async function HomePage({
       <AboutPreview />
       <ProcessSection />
       <PortfolioPreview />
+      <HorizontalProjects />
       <Testimonials />
       <CTA />
     </>

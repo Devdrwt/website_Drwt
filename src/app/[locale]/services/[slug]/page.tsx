@@ -7,24 +7,14 @@ import { Button } from "@/components/ui/button";
 import { PageHeader, GradientText } from "@/components/ui/page-header";
 import { CTA } from "@/components/sections/cta";
 
-const SERVICES = ["consulting", "it-security", "software", "elearning", "media", "web"] as const;
-
-const SLUG_TO_KEY: Record<string, string> = {
-  "consulting": "consulting",
-  "it-security": "it",
-  "software": "software",
-  "elearning": "elearning",
-  "media": "media",
-  "web": "web",
-};
+const SERVICES = ["web-mobile", "custom", "transformation", "ai-data", "security"] as const;
 
 const FEATURES: Record<string, string[]> = {
-  consulting: ["Audit numérique", "Roadmap stratégique", "Conduite du changement", "Gouvernance data"],
-  it: ["Supervision 24/7", "Hardening sécurité", "Sauvegardes managées", "Plans de continuité"],
-  software: ["Web apps", "Mobile (React Native)", "APIs REST/GraphQL", "Intégrations ERP/CRM"],
-  elearning: ["LMS Moodle/Open edX", "Modules SCORM/xAPI", "Vidéos pédagogiques", "Quiz & évaluations"],
-  media: ["Films corporate", "Motion design", "Photo & 360°", "Podcast"],
-  web: ["Sites vitrines", "Portails clients", "E-commerce", "Intranets"],
+  "web-mobile":     ["Sites web responsive", "Apps mobile (iOS/Android)", "Plateformes SaaS", "Performance & SEO"],
+  "custom":         ["Audit & cadrage", "Architecture sur mesure", "Intégrations SI/ERP", "Méthodologie SCRUM"],
+  "transformation": ["Audit numérique", "Digitalisation des processus", "Automatisation (RPA)", "Conduite du changement"],
+  "ai-data":        ["Data engineering", "Machine learning", "Tableaux de bord BI", "IA appliquée métier"],
+  "security":       ["Audit de sécurité", "Hardening infrastructure", "Supervision 24/7", "Sauvegardes & DRP"],
 };
 
 export function generateStaticParams() {
@@ -39,32 +29,27 @@ export default async function ServiceDetailPage({
   const { locale, slug } = await params;
   setRequestLocale(locale);
 
-  const key = SLUG_TO_KEY[slug];
-  if (!key) notFound();
+  if (!SERVICES.includes(slug as (typeof SERVICES)[number])) notFound();
 
   const t = await getTranslations({ locale, namespace: "Services" });
   const tCommon = await getTranslations({ locale, namespace: "Common" });
 
-  const features = FEATURES[key] ?? [];
+  const features = FEATURES[slug] ?? [];
 
   return (
     <>
       <PageHeader
         eyebrow={t("eyebrow")}
-        title={
-          <>
-            <GradientText>{t(`items.${key}.title`)}</GradientText>
-          </>
-        }
-        subtitle={t(`items.${key}.description`)}
+        title={<GradientText>{t(`items.${slug}.title`)}</GradientText>}
+        subtitle={t(`items.${slug}.description`)}
       />
 
       <section className="py-16 md:py-24">
         <div className="container-page grid gap-12 lg:grid-cols-[1.2fr_1fr]">
           <div className="prose-like space-y-5 text-base md:text-lg text-fg-muted leading-relaxed">
-            <p>{t(`items.${key}.description`)}</p>
+            <p>{t(`items.${slug}.description`)}</p>
             <p>
-              Notre approche combine ateliers stratégiques, prototypage rapide et livraisons itératives.
+              Notre approche combine ateliers stratégiques, prototypage rapide et livraisons itératives en sprints SCRUM.
               Chaque mission est pilotée par un binôme senior pour garantir la qualité et la cohérence.
             </p>
             <p>

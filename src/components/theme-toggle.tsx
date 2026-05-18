@@ -12,7 +12,6 @@ export function ThemeToggle({ className }: { className?: string }) {
   const t = useTranslations("Nav");
 
   useEffect(() => setMounted(true), []);
-
   const isDark = mounted && resolvedTheme === "dark";
 
   return (
@@ -21,22 +20,12 @@ export function ThemeToggle({ className }: { className?: string }) {
       aria-label={t("toggleTheme")}
       onClick={() => setTheme(isDark ? "light" : "dark")}
       className={cn(
-        "relative h-10 w-10 inline-flex items-center justify-center rounded-full border border-[var(--border-strong)] bg-[var(--bg-elevated)] text-foreground transition-colors hover:bg-foreground/[0.06]",
+        "relative h-11 w-11 inline-flex items-center justify-center rounded-full text-foreground hover:bg-foreground/[0.08] transition-colors",
         className
       )}
     >
-      <Sun
-        className={cn(
-          "h-4 w-4 transition-all",
-          isDark ? "scale-0 -rotate-90" : "scale-100 rotate-0"
-        )}
-      />
-      <Moon
-        className={cn(
-          "absolute h-4 w-4 transition-all",
-          isDark ? "scale-100 rotate-0" : "scale-0 rotate-90"
-        )}
-      />
+      <Sun className={cn("h-4 w-4 transition-all", isDark ? "scale-0 -rotate-90" : "scale-100 rotate-0")} />
+      <Moon className={cn("absolute h-4 w-4 transition-all", isDark ? "scale-100 rotate-0" : "scale-0 rotate-90")} />
     </button>
   );
 }

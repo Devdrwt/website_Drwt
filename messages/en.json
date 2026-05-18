@@ -1,8 +1,8 @@
 {
   "Meta": {
     "siteName": "Drwintech",
-    "title": "Drwintech — Innovative digital solutions in West Africa",
-    "description": "Drwintech partners with West African organizations to drive their digital transformation: consulting, software, e-learning, media, cybersecurity."
+    "title": "Drwintech — Innovative Digital Solutions",
+    "description": "Drwintech designs, develops and advises on technology solutions for individuals, businesses and institutions. Web, mobile, AI, cybersecurity, digital transformation."
   },
   "Nav": {
     "home": "Home",
@@ -11,6 +11,7 @@
     "portfolio": "Portfolio",
     "team": "Team",
     "careers": "Careers",
+    "blog": "Blog",
     "contact": "Contact",
     "clientArea": "Client area",
     "getQuote": "Get a quote",
@@ -20,9 +21,9 @@
     "switchLanguage": "Switch language"
   },
   "Hero": {
-    "eyebrow": "Digital transformation studio · West Africa",
-    "title": "Let's engineer your <gradient>digital future</gradient>",
-    "subtitle": "Strategy, software engineering, cybersecurity, e-learning and media production. A single partner for your most demanding digital ambitions.",
+    "eyebrow": "Technology studio · Cotonou, Benin",
+    "title": "Let's engineer your <gradient>innovative digital solutions</gradient>",
+    "subtitle": "Drwintech is a company specialized in design, development and technology consulting. We help individuals, businesses and institutions with their digital transformation and security.",
     "ctaPrimary": "Start a project",
     "ctaSecondary": "Explore our services",
     "trustedBy": "Trusted by",
@@ -35,59 +36,52 @@
   },
   "Services": {
     "eyebrow": "Our expertise",
-    "title": "Six disciplines, <gradient>one promise</gradient>",
-    "subtitle": "From strategy to execution, we cover the entire digital value chain so you can scale with confidence.",
+    "title": "Five disciplines, <gradient>one promise</gradient>",
+    "subtitle": "From consulting to deployment, we cover the entire digital value chain so you can scale with confidence.",
     "items": {
-      "consulting": {
-        "title": "Consulting & Transformation",
-        "description": "Diagnostics, digital strategy and change management. We shape your roadmap and align your teams."
+      "web-mobile": {
+        "title": "Web & Mobile Development",
+        "description": "Design and development of modern, high-performance and secure websites, platforms and mobile applications."
       },
-      "it": {
-        "title": "IT, Cybersecurity & Maintenance",
-        "description": "Information systems management, hardening, monitoring and proactive maintenance for a reliable infrastructure."
+      "custom": {
+        "title": "Custom digital solutions",
+        "description": "Development of digital solutions tailored to the specific needs of each organization."
       },
-      "software": {
-        "title": "Custom software",
-        "description": "Business apps, ERP integrations, SaaS platforms. Clean, scalable code, delivered agile."
+      "transformation": {
+        "title": "Digital transformation & automation",
+        "description": "Digitization and automation of business processes to optimize operational performance."
       },
-      "elearning": {
-        "title": "E-learning & Pedagogy",
-        "description": "LMS platforms, SCORM modules, interactive content. We empower your teams and audiences."
+      "ai-data": {
+        "title": "Artificial intelligence & data",
+        "description": "Leveraging data and AI to improve decision-making and performance."
       },
-      "media": {
-        "title": "Media production",
-        "description": "Corporate films, motion design, podcasts, social content. Storytelling that serves your goals."
-      },
-      "web": {
-        "title": "Web & Portals",
-        "description": "Marketing sites, client portals, intranets, e-commerce. Fast, accessible, built to convert."
+      "security": {
+        "title": "Cybersecurity & IT infrastructure",
+        "description": "Securing, managing and optimizing IT infrastructures and information systems."
       }
     },
-    "learnMore": "Learn more"
+    "learnMore": "Learn more",
+    "whyUs": {
+      "title": "Why Drwintech",
+      "items": [
+        "Proven technical expertise",
+        "On-time delivery and quality standards",
+        "Tailored solutions",
+        "End-to-end support"
+      ]
+    }
   },
   "About": {
     "eyebrow": "Who we are",
-    "title": "A studio founded in 2021, already trusted by <gradient>500+ clients</gradient>",
-    "paragraph1": "Drwintech was born from a conviction: West Africa's digital transformation requires local, demanding, deeply committed partners. Since 2021, we've helped institutions, SMBs and large groups design and ship high-impact digital solutions.",
-    "paragraph2": "Our multidisciplinary team — strategists, engineers, designers, educators and creatives — operates studio-style to deliver fast, cleanly, and built to last.",
+    "title": "A technology company <gradient>serving your transformation</gradient>",
+    "paragraph1": "Drwintech specializes in design, development and technology consulting. We offer a broad range of services to support individuals, businesses and institutions through their digital transformation and security.",
+    "paragraph2": "Our mission: design innovative technology solutions that meaningfully address the challenges faced by businesses and organizations. Driven by a diverse, passionate and committed team, we operate in a collaborative environment that fosters creativity, continuous learning and positive impact.",
     "values": {
       "title": "Our values",
-      "excellence": {
-        "title": "Operational excellence",
-        "description": "Reliable delivery, maintainable code, audited processes."
-      },
-      "proximity": {
-        "title": "Client proximity",
-        "description": "Dedicated leads, transparency, responsiveness."
-      },
-      "innovation": {
-        "title": "Useful innovation",
-        "description": "Tech serves your goals, not the other way around."
-      },
-      "impact": {
-        "title": "Local impact",
-        "description": "Local talent grown on the job, regional economic spillover."
-      }
+      "excellence": { "title": "Operational excellence", "description": "Reliable delivery, maintainable code, audited processes." },
+      "proximity":  { "title": "Client proximity",       "description": "Co-construction, successive validations, transparency." },
+      "innovation": { "title": "Useful innovation",      "description": "Tech serves your goals, not the other way around." },
+      "impact":     { "title": "Local impact",           "description": "Local talent grown on the job, regional economic spillover." }
     }
   },
   "Portfolio": {
@@ -114,26 +108,10 @@
       "method": "Our method — the double diamond",
       "methodIntro": "Every project is run with the <strong>double diamond</strong>, the Design Council standard: two divergent phases (broad exploration) alternated with two convergent phases (structural choices). It ensures we design the <em>right thing</em> before designing it <em>right</em>.",
       "phases": {
-        "discover": {
-          "label": "Discover",
-          "tag": "Diverge",
-          "hint": "Explore widely before judging."
-        },
-        "define": {
-          "label": "Define",
-          "tag": "Converge",
-          "hint": "Frame the real problem to solve."
-        },
-        "develop": {
-          "label": "Develop",
-          "tag": "Diverge",
-          "hint": "Imagine multiple solutions, prototype."
-        },
-        "deliver": {
-          "label": "Deliver",
-          "tag": "Converge",
-          "hint": "Ship, measure, iterate."
-        }
+        "discover": { "label": "Discover", "tag": "Diverge",  "hint": "Explore widely before judging." },
+        "define":   { "label": "Define",   "tag": "Converge", "hint": "Frame the real problem to solve." },
+        "develop":  { "label": "Develop",  "tag": "Diverge",  "hint": "Imagine multiple solutions, prototype." },
+        "deliver":  { "label": "Deliver",  "tag": "Converge", "hint": "Ship, measure, iterate." }
       },
       "rightProblem": "Designing the RIGHT thing",
       "rightSolution": "Designing it RIGHT",
@@ -156,24 +134,24 @@
   "Process": {
     "eyebrow": "Our method",
     "title": "From idea to launch, in <gradient>four stages</gradient>",
+    "intro": "Our methodology follows the agile SCRUM approach. It guarantees co-construction with the client and successive validations throughout the project.",
     "steps": {
-      "discover": {
-        "title": "Discover",
-        "description": "Framing, workshops, audit of existing systems, KPI definition."
-      },
-      "design": {
-        "title": "Design",
-        "description": "Architecture, interactive prototypes, design system, user validation."
-      },
-      "build": {
-        "title": "Build",
-        "description": "Iterative development, weekly reviews, continuous integration."
-      },
-      "scale": {
-        "title": "Scale",
-        "description": "Production rollout, training, support, ongoing optimization."
-      }
+      "discover": { "title": "Discovery",   "description": "Framing, workshops, audit of existing systems, KPI definition." },
+      "design":   { "title": "Design",      "description": "Architecture, interactive prototypes, design system, user validation." },
+      "build":    { "title": "Development", "description": "Agile SCRUM sprints, weekly reviews, continuous integration." },
+      "scale":    { "title": "Delivery",    "description": "Production rollout, training, support, ongoing optimization." }
     }
+  },
+  "Blog": {
+    "eyebrow": "Insights",
+    "title": "The <gradient>Drwintech</gradient> blog",
+    "subtitle": "Through our blog, we share our expertise, our experience and our vision of digital technologies to help businesses and organizations better understand the digital landscape.",
+    "readMore": "Read article",
+    "minRead": "min read",
+    "by": "by",
+    "noPosts": "No articles yet.",
+    "categories": "Categories",
+    "all": "All"
   },
   "CTA": {
     "title": "Ready to scale?",
@@ -182,7 +160,7 @@
     "secondary": "Message us on WhatsApp"
   },
   "Footer": {
-    "tagline": "Building innovative digital solutions across West Africa.",
+    "tagline": "Innovative Digital Solutions — we turn your ideas into custom web, mobile and software applications.",
     "rights": "All rights reserved.",
     "explore": "Explore",
     "company": "Company",
@@ -193,7 +171,8 @@
     "subscribe": "Subscribe",
     "emailPlaceholder": "you@email.com",
     "links": {
-      "privacy": "Privacy",
+      "mentions": "Legal notice",
+      "privacy": "Privacy policy",
       "terms": "Terms",
       "cookies": "Cookies"
     },
@@ -235,10 +214,21 @@
     "spontaneousApplication": "Spontaneous application",
     "perks": {
       "title": "Why join",
-      "growth": { "title": "Growth", "description": "Training, conferences, diverse projects." },
-      "remote": { "title": "Hybrid", "description": "Cotonou office + flexible remote." },
-      "team": { "title": "Team", "description": "Senior profiles, mentoring, knowledge sharing." },
-      "impact": { "title": "Impact", "description": "Projects that transform the region." }
+      "growth":    { "title": "Training & growth",     "description": "Training, conferences, continuous skill building." },
+      "remote":    { "title": "Hybrid",                "description": "Cotonou office + flexible remote." },
+      "team":      { "title": "Team",                  "description": "Senior profiles, mentoring, knowledge sharing." },
+      "impact":    { "title": "Impact",                "description": "Diverse, innovative projects that transform the region." },
+      "balance":   { "title": "Work/life balance",     "description": "A culture that respects your personal life." },
+      "diversity": { "title": "Diversity & inclusion", "description": "An open, plural and caring team." }
+    },
+    "process": {
+      "title": "Our recruitment process",
+      "steps": {
+        "1": { "title": "Apply",          "description": "Candidates submit their application via our platform. Each application is carefully reviewed to highlight skills." },
+        "2": { "title": "Profile review", "description": "Our team studies applications to evaluate the fit with the role requirements, the skills sought and the company's values." },
+        "3": { "title": "Interview",      "description": "Shortlisted candidates are invited to an interview to assess their technical skills and their fit with our culture." },
+        "4": { "title": "Decision",       "description": "A decision is made at the end of the process. Selected profiles receive structured support during their onboarding." }
+      }
     }
   },
   "ClientArea": {

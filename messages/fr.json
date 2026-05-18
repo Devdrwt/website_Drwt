@@ -1,16 +1,17 @@
 {
   "Meta": {
     "siteName": "Drwintech",
-    "title": "Drwintech — Solutions numériques innovantes en Afrique de l'Ouest",
-    "description": "Drwintech accompagne les entreprises ouest-africaines dans leur transformation digitale : conseil, développement, e-learning, audiovisuel, cybersécurité."
+    "title": "Drwintech — Solutions Digitales Innovantes",
+    "description": "Drwintech conçoit, développe et conseille en solutions technologiques pour les particuliers, entreprises et institutions. Web, mobile, IA, cybersécurité, transformation digitale."
   },
   "Nav": {
     "home": "Accueil",
     "about": "À propos",
     "services": "Services",
-    "portfolio": "Portfolio",
+    "portfolio": "Réalisations",
     "team": "Équipe",
-    "careers": "Carrière",
+    "careers": "Carrières",
+    "blog": "Blog",
     "contact": "Contact",
     "clientArea": "Espace client",
     "getQuote": "Demander un devis",
@@ -20,9 +21,9 @@
     "switchLanguage": "Changer de langue"
   },
   "Hero": {
-    "eyebrow": "Studio de transformation digitale · Afrique de l'Ouest",
-    "title": "Construisons ensemble votre <gradient>avenir numérique</gradient>",
-    "subtitle": "Stratégie, ingénierie logicielle, cybersécurité, e-learning et production audiovisuelle. Un partenaire unique pour vos ambitions digitales les plus exigeantes.",
+    "eyebrow": "Studio technologique · Cotonou, Bénin",
+    "title": "Concevons ensemble vos <gradient>solutions digitales innovantes</gradient>",
+    "subtitle": "Drwintech est une entreprise spécialisée dans la conception, le développement et le conseil technologique. Nous accompagnons particuliers, entreprises et institutions dans leur transformation numérique et leur sécurisation.",
     "ctaPrimary": "Démarrer un projet",
     "ctaSecondary": "Découvrir nos services",
     "trustedBy": "Ils nous font confiance",
@@ -35,41 +36,46 @@
   },
   "Services": {
     "eyebrow": "Nos expertises",
-    "title": "Six expertises, une <gradient>seule promesse</gradient>",
-    "subtitle": "De la stratégie à l'exécution, nous couvrons l'intégralité de la chaîne de valeur digitale pour vous permettre de scaler en confiance.",
+    "title": "Cinq expertises, <gradient>une seule promesse</gradient>",
+    "subtitle": "Du conseil au déploiement, nous couvrons l'intégralité de la chaîne de valeur digitale pour vous permettre de scaler en confiance.",
     "items": {
-      "consulting": {
-        "title": "Conseil & Transformation",
-        "description": "Diagnostic, stratégie digitale et conduite du changement. Nous structurons votre feuille de route et alignons vos équipes."
+      "web-mobile": {
+        "title": "Développement Web & Mobile",
+        "description": "Conception et développement de sites web, plateformes et applications mobiles modernes, performantes et sécurisées."
       },
-      "it": {
-        "title": "IT, Cybersécurité & Maintenance",
-        "description": "Gestion des systèmes d'information, hardening, supervision et maintenance proactive pour une infrastructure fiable."
+      "custom": {
+        "title": "Solutions digitales sur mesure",
+        "description": "Développement de solutions numériques adaptées aux besoins spécifiques de chaque organisation."
       },
-      "software": {
-        "title": "Solutions sur mesure",
-        "description": "Applications métier, intégrations SI, plateformes SaaS. Code propre, scalable, livré en méthode agile."
+      "transformation": {
+        "title": "Transformation digitale & automatisation",
+        "description": "Digitalisation et automatisation des processus métiers afin d'optimiser les performances opérationnelles."
       },
-      "elearning": {
-        "title": "E-learning & Ingénierie pédagogique",
-        "description": "Plateformes LMS, modules SCORM, contenus interactifs. Nous formons vos équipes et vos publics avec impact."
+      "ai-data": {
+        "title": "Intelligence artificielle & data",
+        "description": "Exploitation des données et de l'intelligence artificielle pour améliorer la prise de décision et la performance."
       },
-      "media": {
-        "title": "Production audiovisuelle",
-        "description": "Films corporate, motion design, podcasts, contenus social media. Une narration au service de vos enjeux."
-      },
-      "web": {
-        "title": "Sites & Plateformes web",
-        "description": "Sites vitrines, portails clients, intranets, e-commerce. Performants, accessibles, conçus pour convertir."
+      "security": {
+        "title": "Cybersécurité & infrastructure IT",
+        "description": "Sécurisation, gestion et optimisation des infrastructures informatiques et systèmes d'information."
       }
     },
-    "learnMore": "En savoir plus"
+    "learnMore": "En savoir plus",
+    "whyUs": {
+      "title": "Pourquoi Drwintech",
+      "items": [
+        "Expertise technique éprouvée",
+        "Respect des délais et des standards de qualité",
+        "Solutions personnalisées",
+        "Accompagnement de bout en bout"
+      ]
+    }
   },
   "About": {
     "eyebrow": "Qui sommes-nous",
-    "title": "Un studio fondé en 2021, déjà au service de <gradient>500+ clients</gradient>",
-    "paragraph1": "Drwintech est née d'une conviction : la transformation digitale de l'Afrique de l'Ouest passe par des partenaires locaux, exigeants et engagés. Depuis 2021, nous accompagnons institutions, PME et grands groupes dans la conception et le déploiement de solutions numériques à fort impact.",
-    "paragraph2": "Notre équipe pluridisciplinaire — stratèges, ingénieurs, designers, formateurs et créatifs — collabore en mode studio pour livrer rapidement, proprement, durablement.",
+    "title": "Une entreprise technologique <gradient>au service de votre transformation</gradient>",
+    "paragraph1": "Drwintech est une entreprise spécialisée dans la conception, le développement et le conseil technologique. Nous proposons une large gamme de services pour accompagner les particuliers, les entreprises et les institutions dans leur transformation numérique et leur sécurisation.",
+    "paragraph2": "Notre mission : concevoir des solutions technologiques innovantes qui répondent concrètement aux défis des entreprises et des organisations. Portée par une équipe diversifiée, passionnée et engagée, nous évoluons dans un environnement de travail collaboratif qui encourage la créativité, l'apprentissage continu et l'impact positif.",
     "values": {
       "title": "Nos valeurs",
       "excellence": {
@@ -78,7 +84,7 @@
       },
       "proximity": {
         "title": "Proximité client",
-        "description": "Interlocuteurs dédiés, transparence, réactivité."
+        "description": "Co-construction, validations successives, transparence."
       },
       "innovation": {
         "title": "Innovation utile",
@@ -114,26 +120,10 @@
       "method": "Notre méthode — le double diamant",
       "methodIntro": "Chaque projet est piloté selon le <strong>double diamant</strong>, le standard du Design Council : deux temps de divergence (exploration large) alternés avec deux temps de convergence (choix structurants). Cela garantit qu'on conçoit la <em>bonne chose</em> avant de la concevoir <em>bien</em>.",
       "phases": {
-        "discover": {
-          "label": "Discover",
-          "tag": "Diverger",
-          "hint": "On explore largement avant de juger."
-        },
-        "define": {
-          "label": "Define",
-          "tag": "Converger",
-          "hint": "On formule le vrai problème à résoudre."
-        },
-        "develop": {
-          "label": "Develop",
-          "tag": "Diverger",
-          "hint": "On imagine plusieurs solutions, on prototype."
-        },
-        "deliver": {
-          "label": "Deliver",
-          "tag": "Converger",
-          "hint": "On livre, on mesure, on améliore."
-        }
+        "discover": { "label": "Discover", "tag": "Diverger",  "hint": "On explore largement avant de juger." },
+        "define":   { "label": "Define",   "tag": "Converger", "hint": "On formule le vrai problème à résoudre." },
+        "develop":  { "label": "Develop",  "tag": "Diverger",  "hint": "On imagine plusieurs solutions, on prototype." },
+        "deliver":  { "label": "Deliver",  "tag": "Converger", "hint": "On livre, on mesure, on améliore." }
       },
       "rightProblem": "On conçoit la BONNE chose",
       "rightSolution": "On la conçoit BIEN",
@@ -156,24 +146,24 @@
   "Process": {
     "eyebrow": "Notre méthode",
     "title": "De l'idée au lancement, en <gradient>quatre temps</gradient>",
+    "intro": "Notre méthodologie relève de l'approche agile SCRUM. Elle garantit une co-construction avec le client ainsi que des validations successives durant l'avancement du projet.",
     "steps": {
-      "discover": {
-        "title": "Discover",
-        "description": "Cadrage des enjeux, ateliers, audit existant, définition des KPIs."
-      },
-      "design": {
-        "title": "Design",
-        "description": "Architecture, prototypes interactifs, design system, validation utilisateur."
-      },
-      "build": {
-        "title": "Build",
-        "description": "Développement itératif, revues hebdomadaires, intégration continue."
-      },
-      "scale": {
-        "title": "Scale",
-        "description": "Mise en production, formation, support, optimisation continue."
-      }
+      "discover": { "title": "Découverte",    "description": "Cadrage des enjeux, ateliers, audit existant, définition des KPIs." },
+      "design":   { "title": "Conception",    "description": "Architecture, prototypes interactifs, design system, validation utilisateur." },
+      "build":    { "title": "Développement", "description": "Sprints agiles SCRUM, revues hebdomadaires, intégration continue." },
+      "scale":    { "title": "Livraison",     "description": "Mise en production, formation, support, optimisation continue." }
     }
+  },
+  "Blog": {
+    "eyebrow": "Insights",
+    "title": "Le blog <gradient>Drwintech</gradient>",
+    "subtitle": "À travers notre blog, nous partageons notre expertise, nos retours d'expérience et notre vision des technologies numériques afin d'aider les entreprises et organisations à mieux comprendre les enjeux du digital.",
+    "readMore": "Lire l'article",
+    "minRead": "min de lecture",
+    "by": "par",
+    "noPosts": "Aucun article pour le moment.",
+    "categories": "Catégories",
+    "all": "Tous"
   },
   "CTA": {
     "title": "Prêt à passer à l'échelle ?",
@@ -182,7 +172,7 @@
     "secondary": "Nous écrire sur WhatsApp"
   },
   "Footer": {
-    "tagline": "Création de solutions numériques innovantes en Afrique de l'Ouest.",
+    "tagline": "Solutions Digitales Innovantes — nous transformons vos idées en applications web, mobiles et logicielles sur mesure.",
     "rights": "Tous droits réservés.",
     "explore": "Explorer",
     "company": "Entreprise",
@@ -193,8 +183,9 @@
     "subscribe": "S'inscrire",
     "emailPlaceholder": "votre@email.com",
     "links": {
-      "privacy": "Confidentialité",
-      "terms": "Conditions",
+      "mentions": "Mentions légales",
+      "privacy": "Politique de confidentialité",
+      "terms": "CGU",
       "cookies": "Cookies"
     },
     "address": "Cotonou, Bénin"
@@ -235,10 +226,21 @@
     "spontaneousApplication": "Candidature spontanée",
     "perks": {
       "title": "Pourquoi nous rejoindre",
-      "growth": { "title": "Croissance", "description": "Formations, conférences, projets variés." },
-      "remote": { "title": "Hybride", "description": "Bureau à Cotonou + remote flexible." },
-      "team": { "title": "Équipe", "description": "Profils seniors, mentoring, partages." },
-      "impact": { "title": "Impact", "description": "Projets qui transforment la région." }
+      "growth":    { "title": "Formation & évolution",   "description": "Formations, conférences, montée en compétences continue." },
+      "remote":    { "title": "Hybride",                  "description": "Bureau à Cotonou + remote flexible." },
+      "team":      { "title": "Équipe",                   "description": "Profils seniors, mentoring, partages." },
+      "impact":    { "title": "Impact",                   "description": "Projets variés et innovants qui transforment la région." },
+      "balance":   { "title": "Équilibre vie pro/perso",  "description": "Une culture qui respecte votre vie personnelle." },
+      "diversity": { "title": "Diversité & inclusion",    "description": "Une équipe ouverte, plurielle et bienveillante." }
+    },
+    "process": {
+      "title": "Notre processus de recrutement",
+      "steps": {
+        "1": { "title": "Dépôt de candidature", "description": "Les candidats soumettent leur dossier via notre plateforme. Chaque candidature est examinée avec attention afin de valoriser les compétences." },
+        "2": { "title": "Analyse du profil",     "description": "Notre équipe étudie les candidatures en évaluant l'adéquation du profil avec les exigences du poste, les compétences recherchées et les valeurs de l'entreprise." },
+        "3": { "title": "Entretien",             "description": "Les candidats présélectionnés sont invités à un entretien visant à évaluer leurs compétences techniques ainsi que leur compatibilité avec notre culture." },
+        "4": { "title": "Décision",              "description": "À l'issue du processus, une décision est prise. Les profils retenus bénéficient d'un accompagnement structuré lors de leur intégration." }
+      }
     }
   },
   "ClientArea": {

@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslations } from "next-intl";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 import { Link } from "@/i18n/navigation";
 import { Badge } from "@/components/ui/badge";
@@ -49,18 +49,18 @@ export function PortfolioGrid({ items }: { items: PortfolioItem[] }) {
   }, [items, filter]);
 
   return (
-    <section className="py-12 md:py-16">
+    <section className="py-16 md:py-24">
       <div className="container-page">
-        <div className="mb-10 flex flex-wrap gap-2">
+        <div className="mb-12 flex flex-wrap gap-2">
           {FILTERS.map((f) => (
             <button
               key={f.key}
               onClick={() => setFilter(f.key)}
               className={cn(
-                "h-10 px-5 rounded-full text-sm font-medium transition-all",
+                "h-10 px-5 rounded-md font-mono text-xs uppercase tracking-[0.12em] transition-all",
                 filter === f.key
-                  ? "bg-foreground text-[var(--bg)] shadow-md"
-                  : "border border-[var(--border-strong)] text-fg-muted hover:text-foreground hover:bg-foreground/[0.04]"
+                  ? "bg-brand-600 text-white"
+                  : "border border-[var(--border-strong)] text-fg-muted hover:text-foreground hover:border-brand-500"
               )}
             >
               {t(`filters.${f.key}`)}
@@ -69,37 +69,37 @@ export function PortfolioGrid({ items }: { items: PortfolioItem[] }) {
         </div>
 
         {filtered.length === 0 ? (
-          <div className="card-elevated p-10 text-center text-fg-muted">
-            Aucun projet dans cette catégorie pour le moment.
+          <div className="card-elevated p-12 text-center text-fg-muted">
+            Aucun projet dans cette catégorie.
           </div>
         ) : (
           <AnimatePresence mode="popLayout">
-            <motion.div layout className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            <motion.div layout className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {filtered.map((p, i) => (
                 <motion.div
                   key={p.slug}
                   layout
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 24 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.35, delay: (i % 6) * 0.04 }}
+                  exit={{ opacity: 0, scale: 0.96 }}
+                  transition={{ duration: 0.4, delay: (i % 6) * 0.04 }}
                 >
                   <Link
                     href={`/portfolio/${p.slug}` as never}
-                    className="group block overflow-hidden rounded-3xl border border-[var(--border)] bg-[var(--bg-elevated)] hover:border-brand-500/40 transition-colors h-full"
+                    className="group block overflow-hidden card-elevated h-full"
                   >
                     <div
-                      className="aspect-[4/3] transition-transform duration-700 group-hover:scale-105"
+                      className="aspect-[16/11] transition-transform duration-700 group-hover:scale-105"
                       style={{ background: p.coverImage }}
                       aria-hidden
                     />
                     <div className="p-6">
-                      <div className="flex items-center justify-between gap-3">
+                      <div className="flex items-center justify-between gap-3 mb-3">
                         <Badge tone="brand">{t(`filters.${CATEGORY_LABEL[p.category]}`)}</Badge>
-                        <ArrowUpRight className="h-4 w-4 text-fg-subtle transition-transform group-hover:rotate-45" />
+                        <ArrowRight className="h-4 w-4 text-fg-subtle -rotate-45 transition-transform group-hover:rotate-0" />
                       </div>
-                      <h3 className="mt-4 font-display text-lg font-semibold leading-tight">{p.title}</h3>
-                      <p className="mt-1 text-sm text-fg-muted">{p.client}</p>
+                      <h3 className="text-xl font-semibold text-foreground">{p.title}</h3>
+                      <p className="mt-1 text-xs text-fg-subtle uppercase tracking-wider font-mono">{p.client}</p>
                       <p className="mt-3 text-sm text-fg-muted leading-relaxed line-clamp-2">{p.summary}</p>
                     </div>
                   </Link>

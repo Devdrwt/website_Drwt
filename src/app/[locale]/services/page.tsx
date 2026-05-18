@@ -2,6 +2,8 @@ import { setRequestLocale, getTranslations } from "next-intl/server";
 import { PageHeader, GradientText } from "@/components/ui/page-header";
 import { ServicesSection } from "@/components/sections/services";
 import { ProcessSection } from "@/components/sections/process";
+import { StatsCounter } from "@/components/sections/stats-counter";
+import { Testimonials } from "@/components/sections/testimonials";
 import { CTA } from "@/components/sections/cta";
 
 export async function generateMetadata({
@@ -32,6 +34,8 @@ export default async function ServicesPage({
       />
       <ServicesSection />
       <ProcessSection />
+      <StatsCounter />
+      <Testimonials />
       <CTA />
     </>
   );

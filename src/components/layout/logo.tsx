@@ -1,43 +1,55 @@
+"use client";
+
+import Image from "next/image";
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
+
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/cn";
 
 export function Logo({
   className,
-  withWordmark = true,
+  variant = "auto",
+  full = false,
+  height = 36,
 }: {
   className?: string;
-  withWordmark?: boolean;
+  /** auto = follows theme, light = always light, dark = always dark */
+  variant?: "auto" | "light" | "dark";
+  /** true = use logo-full.png (with tagline) */
+  full?: boolean;
+  height?: number;
 }) {
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
+  // The provided logo is colored (cyan); both light/dark backgrounds work, but
+  // on very dark backgrounds we'd want a white version — which we don't have.
+  // We use the same PNG for both, with optional drop-shadow on dark theme.
+  const src = full ? "/logo/logo-full.png" : "/logo/logo.png";
+
+  const isDarkBg =
+    variant === "dark" || (variant === "auto" && mounted && resolvedTheme === "dark");
+
   return (
     <Link
       href="/"
-      className={cn(
-        "group inline-flex items-center gap-2.5 font-display font-semibold text-foreground",
-        className
-      )}
+      className={cn("inline-flex items-center", className)}
       aria-label="Drwintech — Accueil"
     >
-      <span className="relative inline-flex h-9 w-9 items-center justify-center overflow-hidden rounded-xl bg-[linear-gradient(135deg,var(--accent-from),var(--accent-via),var(--accent-to))] bg-[length:200%_200%] animate-gradient text-white shadow-[var(--shadow-glow)] transition-transform group-hover:scale-105">
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          className="h-5 w-5"
-          stroke="currentColor"
-          strokeWidth={2.4}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          aria-hidden
-        >
-          <path d="M4 5h7a5 5 0 0 1 0 10H4z" />
-          <path d="M13 12l7 7" />
-        </svg>
-        <span className="absolute inset-0 rounded-xl ring-1 ring-inset ring-white/20" />
-      </span>
-      {withWordmark && (
-        <span className="text-base tracking-tight leading-none">
-          Drwin<span className="text-brand-500">tech</span>
-        </span>
-      )}
+      <Image
+        src={src}
+        alt="Drwintech"
+        width={full ? 360 : 200}
+        height={height}
+        priority
+        className={cn(
+          "h-auto w-auto",
+          isDarkBg && "drop-shadow-[0_0_12px_rgba(31,163,255,0.25)]"
+        )}
+        style={{ height }}
+      />
     </Link>
   );
 }

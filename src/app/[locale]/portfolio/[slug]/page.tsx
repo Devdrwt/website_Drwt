@@ -19,6 +19,7 @@ import {
   DoubleDiamondViz,
   DoubleDiamondPhases,
 } from "@/components/double-diamond";
+import { ProjectHeroCover } from "@/components/project-hero-cover";
 import { prisma } from "@/lib/prisma";
 
 export async function generateStaticParams() {
@@ -72,12 +73,7 @@ export default async function ProjectDetailPage({
     <>
       {/* === Hero === */}
       <section className="relative pt-12 pb-24 md:pt-16 md:pb-32 overflow-hidden">
-        <div
-          className="absolute inset-x-0 top-0 h-[520px] -z-10"
-          style={{ background: project.coverImage }}
-          aria-hidden
-        />
-        <div className="absolute inset-x-0 top-0 h-[520px] -z-10 bg-gradient-to-b from-transparent via-[var(--bg)]/60 to-[var(--bg)]" aria-hidden />
+        <ProjectHeroCover cover={project.coverImage} />
 
         <div className="container-page relative">
           <Link

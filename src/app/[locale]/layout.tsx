@@ -9,6 +9,7 @@ import { SessionProvider } from "@/components/session-provider";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { WhatsAppFab } from "@/components/layout/whatsapp-fab";
+import { CustomCursor } from "@/components/custom-cursor";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -53,6 +54,7 @@ export default async function LocaleLayout({
             <main className="flex-1 pt-20">{children}</main>
             <Footer />
             <WhatsAppFab />
+            <CustomCursor />
           </div>
         </ThemeProvider>
       </SessionProvider>

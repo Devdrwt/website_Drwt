@@ -1,39 +1,103 @@
-import { ReactNode } from "react";
+"use client";
+
+import { ReactNode, useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+
 import { GradientText } from "./gradient-text";
+import { FloatingShapes } from "../animations/floating-shapes";
+import { ScrollIndicator } from "../animations/scroll-indicator";
 
 export function PageHeader({
   eyebrow,
   title,
   subtitle,
+  children,
+  scrollHint = true,
 }: {
   eyebrow?: string;
   title: ReactNode;
   subtitle?: ReactNode;
+  children?: ReactNode;
+  scrollHint?: boolean;
 }) {
+  const ref = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
+  const y = useTransform(scrollYProgress, [0, 1], [0, 100]);
+  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0.2]);
+
   return (
-    <section className="relative pt-16 pb-16 md:pt-20 md:pb-20 overflow-hidden">
-      <div className="surface-grid absolute inset-0 opacity-40 pointer-events-none" aria-hidden />
-      <div
-        className="absolute -top-32 left-1/2 -translate-x-1/2 h-[420px] w-[820px] rounded-full bg-[radial-gradient(closest-side,var(--accent-via),transparent_70%)] opacity-25 blur-3xl pointer-events-none"
+    <section
+      ref={ref}
+      className="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden bg-[var(--bg-muted)] border-b border-[var(--border)]"
+    >
+      <FloatingShapes />
+
+      <motion.div
+        style={{ y, opacity }}
         aria-hidden
-      />
-      <div className="container-page relative">
-        <div className="max-w-3xl">
+        className="absolute inset-0 opacity-30 pointer-events-none"
+      >
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage:
+              "linear-gradient(var(--border-strong) 1px, transparent 1px), linear-gradient(90deg, var(--border-strong) 1px, transparent 1px)",
+            backgroundSize: "80px 80px",
+            maskImage:
+              "radial-gradient(ellipse 75% 60% at 50% 0%, #000 30%, transparent 80%)",
+            WebkitMaskImage:
+              "radial-gradient(ellipse 75% 60% at 50% 0%, #000 30%, transparent 80%)",
+          }}
+        />
+      </motion.div>
+
+      <motion.div style={{ y, opacity }} className="container-page relative">
+        <div className="max-w-4xl">
           {eyebrow && (
-            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-brand-600 dark:text-brand-400">
+            <motion.p
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="eyebrow-line mb-5"
+            >
               {eyebrow}
-            </p>
+            </motion.p>
           )}
-          <h1 className="text-balance font-display text-4xl md:text-5xl lg:text-6xl font-semibold leading-[1.05] tracking-tight">
+
+          <motion.h1
+            initial={{ opacity: 0, y: 28 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="heading-display text-balance text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-foreground"
+          >
             {title}
-          </h1>
+          </motion.h1>
+
           {subtitle && (
-            <p className="mt-6 text-balance text-base md:text-lg text-fg-muted leading-relaxed max-w-2xl">
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="mt-6 text-balance text-base md:text-lg text-fg-muted leading-relaxed max-w-2xl"
+            >
               {subtitle}
-            </p>
+            </motion.p>
+          )}
+
+          {children && (
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.45 }}
+              className="mt-10"
+            >
+              {children}
+            </motion.div>
           )}
         </div>
-      </div>
+      </motion.div>
+
+      {scrollHint && <ScrollIndicator />}
     </section>
   );
 }
