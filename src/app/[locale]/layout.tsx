@@ -6,9 +6,6 @@ import type { Metadata } from "next";
 import { routing } from "@/i18n/routing";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SessionProvider } from "@/components/session-provider";
-import { Navbar } from "@/components/layout/navbar";
-import { Footer } from "@/components/layout/footer";
-import { WhatsAppFab } from "@/components/layout/whatsapp-fab";
 import { CustomCursor } from "@/components/custom-cursor";
 
 export function generateStaticParams() {
@@ -49,13 +46,8 @@ export default async function LocaleLayout({
     <NextIntlClientProvider>
       <SessionProvider>
         <ThemeProvider>
-          <div className="relative flex min-h-dvh flex-col">
-            <Navbar />
-            <main className="flex-1 pt-20">{children}</main>
-            <Footer />
-            <WhatsAppFab />
-            <CustomCursor />
-          </div>
+          {children}
+          <CustomCursor />
         </ThemeProvider>
       </SessionProvider>
     </NextIntlClientProvider>

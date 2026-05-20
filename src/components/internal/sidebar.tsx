@@ -2,8 +2,9 @@
 
 import { Link, usePathname } from "@/i18n/navigation";
 import { signOut } from "next-auth/react";
-import { LayoutGrid, FolderKanban, LogOut, ShieldCheck } from "lucide-react";
+import { LayoutGrid, FolderKanban, LogOut, ShieldCheck, Home } from "lucide-react";
 import { cn } from "@/lib/cn";
+import { Logo } from "@/components/layout/logo";
 
 const items = [
   { href: "/internal",          label: "Vue d'ensemble", Icon: LayoutGrid,   exact: true },
@@ -28,12 +29,13 @@ export function InternalSidebar({
   const nav = useItems();
 
   return (
-    <aside className="hidden lg:flex sticky top-20 h-[calc(100dvh-5rem)] w-64 shrink-0 flex-col border-r border-[var(--border)] bg-[var(--bg-elevated)]">
+    <aside className="hidden lg:flex sticky top-0 h-dvh w-64 shrink-0 flex-col border-r border-[var(--border)] bg-[var(--bg-elevated)]">
       <div className="p-6 border-b border-[var(--border)]">
-        <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-brand-600 dark:text-brand-400">
+        <Logo height={28} />
+        <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.18em] text-brand-600 dark:text-brand-400">
           Espace interne
         </p>
-        <p className="mt-1 text-lg font-semibold text-foreground">Projets Drwintech</p>
+        <p className="mt-0.5 text-lg font-semibold text-foreground">Projets Drwintech</p>
       </div>
 
       <nav className="flex-1 p-4 space-y-1 overflow-y-auto">
@@ -56,8 +58,8 @@ export function InternalSidebar({
           );
         })}
 
-        {role === "ADMIN" && (
-          <div className="pt-4 mt-4 border-t border-[var(--border)]">
+        <div className="pt-4 mt-4 border-t border-[var(--border)] space-y-1">
+          {role === "ADMIN" && (
             <Link
               href={"/admin" as "/internal"}
               className="flex items-center gap-3 px-3 h-11 rounded-lg text-sm font-medium text-fg-muted hover:bg-foreground/[0.05] hover:text-foreground transition-colors"
@@ -65,8 +67,15 @@ export function InternalSidebar({
               <ShieldCheck className="h-4 w-4" />
               Back-office admin
             </Link>
-          </div>
-        )}
+          )}
+          <Link
+            href={"/" as "/internal"}
+            className="flex items-center gap-3 px-3 h-11 rounded-lg text-sm font-medium text-fg-muted hover:bg-foreground/[0.05] hover:text-foreground transition-colors"
+          >
+            <Home className="h-4 w-4" />
+            Retour au site
+          </Link>
+        </div>
       </nav>
 
       <div className="p-4 border-t border-[var(--border)]">

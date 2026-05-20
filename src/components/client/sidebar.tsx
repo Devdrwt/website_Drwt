@@ -26,7 +26,7 @@ export function ClientSidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="hidden lg:flex sticky top-20 h-[calc(100dvh-5rem)] w-64 shrink-0 flex-col border-r border-[var(--border)] bg-[var(--bg-elevated)]/60 backdrop-blur">
+    <aside className="hidden lg:flex sticky top-0 h-dvh w-64 shrink-0 flex-col border-r border-[var(--border)] bg-[var(--bg-elevated)]/60 backdrop-blur">
       <div className="p-6 border-b border-[var(--border)]">
         <Logo />
       </div>

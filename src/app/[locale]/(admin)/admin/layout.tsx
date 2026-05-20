@@ -2,6 +2,7 @@ import { setRequestLocale } from "next-intl/server";
 import { redirect } from "@/i18n/navigation";
 import { auth } from "@/lib/auth";
 import { AdminSidebar } from "@/components/admin/sidebar";
+import { DashboardTopbar } from "@/components/dashboard-topbar";
 
 export default async function AdminLayout({
   children,
@@ -22,9 +23,12 @@ export default async function AdminLayout({
   }
 
   return (
-    <div className="flex">
+    <div className="flex min-h-dvh">
       <AdminSidebar />
-      <div className="flex-1 min-w-0">{children}</div>
+      <div className="flex-1 min-w-0">
+        <DashboardTopbar label="Back-office" />
+        {children}
+      </div>
     </div>
   );
 }

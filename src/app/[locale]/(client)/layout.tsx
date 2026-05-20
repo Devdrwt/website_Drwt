@@ -2,6 +2,7 @@ import { setRequestLocale } from "next-intl/server";
 import { redirect } from "@/i18n/navigation";
 import { auth } from "@/lib/auth";
 import { ClientSidebar } from "@/components/client/sidebar";
+import { DashboardTopbar } from "@/components/dashboard-topbar";
 
 export default async function ClientLayout({
   children,
@@ -19,9 +20,12 @@ export default async function ClientLayout({
   }
 
   return (
-    <div className="flex">
+    <div className="flex min-h-dvh">
       <ClientSidebar />
-      <div className="flex-1 min-w-0">{children}</div>
+      <div className="flex-1 min-w-0">
+        <DashboardTopbar label="Espace client" />
+        {children}
+      </div>
     </div>
   );
 }

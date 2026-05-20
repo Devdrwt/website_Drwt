@@ -2,6 +2,7 @@ import { setRequestLocale } from "next-intl/server";
 import { redirect } from "@/i18n/navigation";
 import { auth } from "@/lib/auth";
 import { InternalSidebar, InternalMobileNav } from "@/components/internal/sidebar";
+import { DashboardTopbar } from "@/components/dashboard-topbar";
 
 export default async function InternalLayout({
   children,
@@ -25,9 +26,10 @@ export default async function InternalLayout({
   const userName = session.user.name ?? session.user.email ?? "Membre";
 
   return (
-    <div className="flex">
+    <div className="flex min-h-dvh bg-[var(--bg-muted)]/30">
       <InternalSidebar role={role} userName={userName} />
       <div className="flex-1 min-w-0">
+        <DashboardTopbar label="Espace interne" />
         <InternalMobileNav />
         {children}
       </div>
