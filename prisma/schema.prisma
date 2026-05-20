@@ -16,6 +16,7 @@ datasource db {
 
 enum UserRole {
   ADMIN
+  STAFF
   CLIENT
 }
 
@@ -38,6 +39,11 @@ model User {
   invoices     Invoice[]
   tickets      SupportTicket[]
   applications JobApplication[]
+
+  // Internal projects dashboard
+  authoredNotes     ProjectNote[]     @relation("NoteAuthor")
+  uploadedResources ProjectResource[] @relation("ResourceUploader")
+  projectMemberships ProjectMember[]
 }
 
 model Account {
@@ -151,17 +157,139 @@ model Project {
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
 
+  // Internal project tracking (dashboard interne)
+  status        ProjectStatus @default(ACTIVE)
+  progress      Int           @default(0) // 0–100
+  startDate     DateTime?
+  endDate       DateTime?
+  priority      ProjectPriority @default(MEDIUM)
+
   serviceId     String?
   service       Service? @relation(fields: [serviceId], references: [id])
   clientUserId  String?
   clientUser    User?    @relation("ProjectClient", fields: [clientUserId], references: [id])
 
   milestones    ProjectMilestone[]
+  resources     ProjectResource[]
+  accesses      ProjectAccess[]
+  notes         ProjectNote[]
+  members       ProjectMember[]
 
   @@index([category])
   @@index([featured])
   @@index([serviceId])
   @@index([clientUserId])
+  @@index([status])
+}
+
+enum ProjectStatus {
+  PROSPECT   // en discussion / avant-vente
+  ACTIVE     // en cours
+  ON_HOLD    // en pause
+  COMPLETED  // terminé
+  ARCHIVED   // archivé
+}
+
+enum ProjectPriority {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+// --- Ressources & documentation rattachées à un projet ---
+enum ResourceKind {
+  LINK
+  FILE
+}
+
+enum ResourceCategory {
+  SPEC       // cahier des charges, specs
+  DESIGN     // maquettes, design system
+  DOC        // documentation technique / fonctionnelle
+  REPORT     // comptes-rendus, rapports
+  ASSET      // ressources média
+  OTHER
+}
+
+model ProjectResource {
+  id         String           @id @default(cuid())
+  projectId  String
+  kind       ResourceKind     @default(LINK)
+  category   ResourceCategory @default(DOC)
+  label      String
+  url        String?          // pour kind = LINK
+  filePath   String?          // pour kind = FILE — chemin relatif dans /private/uploads
+  fileName   String?          // nom d'origine du fichier
+  fileSize   Int?             // octets
+  mimeType   String?
+  note       String?          @db.Text
+  createdAt  DateTime         @default(now())
+  updatedAt  DateTime         @updatedAt
+
+  project    Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  uploadedById String?
+  uploadedBy   User?  @relation("ResourceUploader", fields: [uploadedById], references: [id])
+
+  @@index([projectId])
+}
+
+// --- Accès : liens & références uniquement, jamais de secrets ---
+enum AccessEnvironment {
+  REPOSITORY
+  STAGING
+  PRODUCTION
+  DESIGN_TOOL
+  PROJECT_MGMT
+  OTHER
+}
+
+model ProjectAccess {
+  id          String            @id @default(cuid())
+  projectId   String
+  environment AccessEnvironment @default(OTHER)
+  label       String            // ex: "Dépôt GitHub", "Préprod", "Figma"
+  url         String?
+  credentialHint String?        @db.Text // ex: "Identifiants dans le coffre Bitwarden — dossier Drwintech"
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+
+  project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@index([projectId])
+}
+
+// --- Notes / comptes-rendus rédigés dans l'app ---
+model ProjectNote {
+  id         String   @id @default(cuid())
+  projectId  String
+  title      String
+  body       String   @db.LongText // markdown
+  pinned     Boolean  @default(false)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  project  Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  authorId String?
+  author   User?   @relation("NoteAuthor", fields: [authorId], references: [id])
+
+  @@index([projectId])
+}
+
+// --- Membres d'équipe rattachés à un projet ---
+model ProjectMember {
+  id        String   @id @default(cuid())
+  projectId String
+  userId    String
+  roleLabel String?  // ex: "Lead dev", "UX", "PM"
+  createdAt DateTime @default(now())
+
+  project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([projectId, userId])
+  @@index([projectId])
+  @@index([userId])
 }
 
 enum MilestoneStatus {

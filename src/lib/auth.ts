@@ -10,11 +10,11 @@ declare module "next-auth" {
   interface Session {
     user: {
       id: string;
-      role: "ADMIN" | "CLIENT";
+      role: "ADMIN" | "STAFF" | "CLIENT";
     } & DefaultSession["user"];
   }
   interface User {
-    role?: "ADMIN" | "CLIENT";
+    role?: "ADMIN" | "STAFF" | "CLIENT";
   }
 }
 
@@ -61,14 +61,14 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     async jwt({ token, user }) {
       if (user) {
         token.id = user.id;
-        token.role = (user as { role?: "ADMIN" | "CLIENT" }).role ?? "CLIENT";
+        token.role = (user as { role?: "ADMIN" | "STAFF" | "CLIENT" }).role ?? "CLIENT";
       }
       return token;
     },
     async session({ session, token }) {
       if (session.user && token) {
         session.user.id = token.id as string;
-        session.user.role = (token.role as "ADMIN" | "CLIENT") ?? "CLIENT";
+        session.user.role = (token.role as "ADMIN" | "STAFF" | "CLIENT") ?? "CLIENT";
       }
       return session;
     },

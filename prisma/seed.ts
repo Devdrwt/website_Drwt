@@ -436,6 +436,93 @@ async function main() {
   console.log(`  ✓ ${projects.length} projects (avec narration double diamant)`);
 
   // ============================================================
+  // INTERNAL DASHBOARD — rôle STAFF, suivi, ressources, accès, notes
+  // ============================================================
+  const staffPwd = await bcrypt.hash("Staff12345!", 12);
+  const staff = await prisma.user.upsert({
+    where: { email: "staff@drwintech.com" },
+    update: { role: "STAFF" },
+    create: {
+      email: "staff@drwintech.com",
+      name: "Membre Équipe",
+      password: staffPwd,
+      role: "STAFF",
+    },
+  });
+  console.log("  ✓ staff:", staff.email, "/ Staff12345!");
+
+  // Suivi projet : statut / avancement / priorité / dates (variés)
+  const tracking: Record<
+    string,
+    { status: "PROSPECT" | "ACTIVE" | "ON_HOLD" | "COMPLETED" | "ARCHIVED";
+      priority: "LOW" | "MEDIUM" | "HIGH" | "CRITICAL";
+      progress: number; startMonthsAgo: number; durationMonths: number }
+  > = {
+    zetcha:        { status: "COMPLETED", priority: "HIGH",     progress: 100, startMonthsAgo: 8, durationMonths: 4 },
+    "hcbe-usa-c":  { status: "ACTIVE",    priority: "CRITICAL", progress: 65,  startMonthsAgo: 5, durationMonths: 7 },
+    adsgenious:    { status: "ACTIVE",    priority: "HIGH",     progress: 40,  startMonthsAgo: 3, durationMonths: 6 },
+    "hrh-semca":   { status: "ON_HOLD",   priority: "MEDIUM",   progress: 55,  startMonthsAgo: 6, durationMonths: 8 },
+    beeloyalty:    { status: "COMPLETED", priority: "MEDIUM",   progress: 100, startMonthsAgo: 12, durationMonths: 5 },
+    fewuproducts:  { status: "ACTIVE",    priority: "MEDIUM",   progress: 25,  startMonthsAgo: 2, durationMonths: 5 },
+    juristouch:    { status: "PROSPECT",  priority: "LOW",      progress: 5,   startMonthsAgo: 0, durationMonths: 6 },
+    afropostmedia: { status: "ARCHIVED",  priority: "LOW",      progress: 100, startMonthsAgo: 18, durationMonths: 4 },
+  };
+
+  const MONTH = 30 * 86400000;
+  for (const p of projects) {
+    const t = tracking[p.slug];
+    if (!t) continue;
+    const start = new Date(Date.now() - t.startMonthsAgo * MONTH);
+    const end = new Date(start.getTime() + t.durationMonths * MONTH);
+    await prisma.project.update({
+      where: { slug: p.slug },
+      data: {
+        status: t.status,
+        priority: t.priority,
+        progress: t.progress,
+        startDate: start,
+        endDate: end,
+      },
+    });
+  }
+  console.log(`  ✓ suivi interne sur ${Object.keys(tracking).length} projets`);
+
+  // Ressources, accès & notes — exemples sur 3 projets clés
+  const seedProject = await prisma.project.findUnique({ where: { slug: "hcbe-usa-c" } });
+  if (seedProject) {
+    await prisma.projectResource.deleteMany({ where: { projectId: seedProject.id } });
+    await prisma.projectAccess.deleteMany({ where: { projectId: seedProject.id } });
+    await prisma.projectNote.deleteMany({ where: { projectId: seedProject.id } });
+
+    await prisma.projectResource.createMany({
+      data: [
+        { projectId: seedProject.id, kind: "LINK", category: "SPEC",   label: "Cahier des charges fonctionnel", url: "https://docs.google.com/document/d/exemple-cdc" },
+        { projectId: seedProject.id, kind: "LINK", category: "DESIGN", label: "Maquettes Figma — parcours imagerie", url: "https://figma.com/file/exemple-hcbe" },
+        { projectId: seedProject.id, kind: "LINK", category: "DOC",    label: "Documentation API (Swagger)", url: "https://api.hcbe.example/docs" },
+        { projectId: seedProject.id, kind: "LINK", category: "REPORT", label: "Compte-rendu atelier de cadrage", url: "https://notion.so/exemple-cr-cadrage" },
+      ],
+    });
+    await prisma.projectAccess.createMany({
+      data: [
+        { projectId: seedProject.id, environment: "REPOSITORY",   label: "Dépôt GitHub", url: "https://github.com/drwintech/hcbe-usa-c", credentialHint: "Accès via l'organisation GitHub Drwintech" },
+        { projectId: seedProject.id, environment: "STAGING",      label: "Préproduction", url: "https://staging.hcbe.example", credentialHint: "Identifiants dans le coffre Bitwarden — dossier HCBE" },
+        { projectId: seedProject.id, environment: "PROJECT_MGMT", label: "Espace Notion projet", url: "https://notion.so/drwintech/hcbe" },
+      ],
+    });
+    await prisma.projectNote.createMany({
+      data: [
+        { projectId: seedProject.id, authorId: admin.id, pinned: true,
+          title: "Points de vigilance — gouvernance IA",
+          body: "Documenter systématiquement les sources de données, les biais identifiés et les limites du modèle d'imagerie. Revue clinique mensuelle obligatoire avant toute mise en production d'une nouvelle suggestion." },
+        { projectId: seedProject.id, authorId: staff.id, pinned: false,
+          title: "CR réunion hebdo — semaine en cours",
+          body: "Avancement intégration du module DICOM à 65%. Prochaine étape : tests de charge sur le pipeline d'inférence. Bloquant levé côté infrastructure GPU." },
+      ],
+    });
+    console.log("  ✓ ressources / accès / notes d'exemple (projet HCBE USA-C)");
+  }
+
+  // ============================================================
   // JOBS — 5 postes Drwintech
   // ============================================================
   const jobs = [

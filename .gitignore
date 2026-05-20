@@ -47,6 +47,10 @@ yarn-error.log*
 /public/images/heroes/*.png
 /public/images/heroes/*.webp
 
+# Internal project file uploads (served via authenticated API route)
+/private/uploads/*
+!/private/uploads/.gitkeep
+
 # vercel
 .vercel
 
