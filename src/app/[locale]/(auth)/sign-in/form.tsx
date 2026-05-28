@@ -16,7 +16,7 @@ const schema = z.object({
 type Values = z.infer<typeof schema>;
 
 const fieldCls =
-  "h-12 w-full rounded-xl border border-white/15 bg-white/10 pl-11 pr-4 text-sm text-white placeholder:text-white/40 transition-colors focus-visible:border-brand-300 focus-visible:bg-white/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300/30";
+  "h-12 w-full rounded-xl border border-slate-300 bg-slate-50 pl-11 pr-4 text-sm text-slate-900 placeholder:text-slate-400 transition-colors focus-visible:border-brand-500 focus-visible:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/25";
 
 export function SignInForm() {
   const t = useTranslations("Auth");
@@ -49,11 +49,11 @@ export function SignInForm() {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
       <div className="space-y-1.5">
-        <label htmlFor="email" className="font-mono text-[10px] uppercase tracking-[0.16em] text-white/60">
+        <label htmlFor="email" className="font-mono text-[10px] uppercase tracking-[0.16em] text-slate-500">
           {t("email")}
         </label>
         <div className="relative">
-          <Mail className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-white/40" />
+          <Mail className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
           <input
             id="email"
             type="email"
@@ -68,15 +68,15 @@ export function SignInForm() {
 
       <div className="space-y-1.5">
         <div className="flex items-center justify-between">
-          <label htmlFor="password" className="font-mono text-[10px] uppercase tracking-[0.16em] text-white/60">
+          <label htmlFor="password" className="font-mono text-[10px] uppercase tracking-[0.16em] text-slate-500">
             {t("password")}
           </label>
-          <a href="#" className="text-xs text-brand-200 hover:text-white transition-colors">
+          <a href="#" className="text-xs text-brand-600 hover:text-brand-700 transition-colors">
             {t("forgot")}
           </a>
         </div>
         <div className="relative">
-          <Lock className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-white/40" />
+          <Lock className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
           <input
             id="password"
             type="password"
@@ -90,7 +90,7 @@ export function SignInForm() {
       </div>
 
       {error && (
-        <p className="flex items-center gap-2 rounded-lg bg-rose-500/15 border border-rose-400/30 px-3 py-2 text-sm text-rose-100">
+        <p className="flex items-center gap-2 rounded-lg bg-rose-50 border border-rose-200 px-3 py-2 text-sm text-rose-600">
           <AlertCircle className="h-4 w-4 shrink-0" />
           {error}
         </p>
@@ -99,7 +99,7 @@ export function SignInForm() {
       <button
         type="submit"
         disabled={loading}
-        className="group mt-2 inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-white text-brand-800 font-semibold text-sm shadow-lg transition-all hover:bg-white/95 hover:shadow-xl disabled:opacity-60"
+        className="group mt-2 inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-brand-600 text-white font-semibold text-sm shadow-lg transition-all hover:bg-brand-700 hover:shadow-xl disabled:opacity-60"
       >
         {loading ? (
           <Loader2 className="h-4 w-4 animate-spin" />

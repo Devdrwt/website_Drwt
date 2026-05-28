@@ -32,7 +32,7 @@ export default async function SignInPage({
           {t("noAccount")}{" "}
           <Link
             href="/sign-up"
-            className="font-semibold text-brand-200 hover:text-white transition-colors"
+            className="font-semibold text-brand-600 hover:text-brand-700 transition-colors"
           >
             {t("createAccount")}
           </Link>

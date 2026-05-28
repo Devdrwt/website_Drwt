@@ -51,32 +51,12 @@ export function AboutPreview() {
         <div className="grid gap-16 lg:grid-cols-[1fr_1.1fr] lg:items-center">
           {/* Image — right on desktop, top on mobile */}
           <div className="relative aspect-[4/5] lg:aspect-[5/6] overflow-hidden rounded-2xl order-1 lg:order-2">
-            <div
-              className="absolute inset-0"
-              style={{
-                background:
-                  "linear-gradient(135deg, #1fa3ff 0%, #1665eb 45%, #14438c 100%)",
-              }}
+            <img
+              src="/images/about-drw.jpg"
+              alt="Drwintech"
+              className="absolute inset-0 h-full w-full object-cover"
+              loading="lazy"
             />
-            <div
-              aria-hidden
-              className="absolute inset-0 mix-blend-overlay opacity-50"
-              style={{
-                backgroundImage:
-                  "linear-gradient(rgba(255,255,255,.18) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.18) 1px, transparent 1px)",
-                backgroundSize: "60px 60px",
-              }}
-            />
-            <div className="absolute inset-0 flex items-end p-10 lg:p-14">
-              <div className="text-white">
-                <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-white/75 mb-3">
-                  {t("eyebrow")}
-                </p>
-                <p className="font-display text-3xl lg:text-4xl leading-tight">
-                  Push Beyond Today<span className="text-brand-200">.</span>
-                </p>
-              </div>
-            </div>
           </div>
 
           <div className="order-2 lg:order-1">

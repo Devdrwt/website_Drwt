@@ -112,7 +112,7 @@ export function Hero() {
       />
 
       <div className="container-wide relative w-full">
-        <div className="max-w-3xl text-white">
+        <div className="text-center text-white">
           <AnimatePresence mode="wait">
             <motion.div
               key={idx}
@@ -122,7 +122,7 @@ export function Hero() {
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             >
               {/* Eyebrow with line */}
-              <div className="flex items-center gap-3 mb-6 md:mb-8">
+              <div className="flex items-center justify-center gap-3 mb-6 md:mb-8">
                 <span className="h-px w-12 bg-brand-400" />
                 <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-brand-200">
                   {slide.eyebrow}
@@ -131,7 +131,7 @@ export function Hero() {
 
               <h1 className="heading-mega text-white text-balance">{slide.title}</h1>
 
-              <p className="mt-8 max-w-2xl text-base md:text-lg lg:text-xl text-white/85 leading-relaxed">
+              <p className="mt-8 max-w-3xl mx-auto text-base md:text-lg lg:text-xl text-white/85 leading-relaxed">
                 {slide.subtitle}
               </p>
             </motion.div>
@@ -141,7 +141,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
-            className="mt-10 flex flex-wrap items-center gap-3"
+            className="mt-10 flex flex-wrap items-center justify-center gap-3"
           >
             <Link href="/contact">
               <Button variant="primary" size="lg">
