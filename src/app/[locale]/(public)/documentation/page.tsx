@@ -41,6 +41,7 @@ export default async function DocumentationPage({
   return (
     <>
       <PageHeader
+        variant="docs"
         eyebrow="Documentation"
         title={
           en ? (
