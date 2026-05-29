@@ -19,8 +19,8 @@ export const siteConfig = {
     instagram: "https://www.instagram.com/drwintech",
   },
   stats: {
-    products: 2000,
-    clients: 500,
+    products: 50,
+    clients: 40,
     years: new Date().getFullYear() - 2021,
     satisfaction: 98,
   },
