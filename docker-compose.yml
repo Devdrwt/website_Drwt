@@ -1,9 +1,11 @@
-# Production stack for the Hostinger VPS.
-#   db    — MySQL 8 (data persisted in a named volume)
-#   app   — Next.js standalone server (image built & pushed by GitHub Actions)
-#   caddy — reverse proxy with automatic HTTPS (Let's Encrypt)
+# Production stack for the Hostinger VPS (Webuzo + nginx front).
+#   db  — MySQL 8 (data persisted in a named volume, internal network only)
+#   app — Next.js standalone server, bound to 127.0.0.1:3000
 #
-# Configure values in a `.env` file next to this one (see .env.production.example).
+# The host already runs nginx (Webuzo) on ports 80/443. nginx reverse-proxies
+# the site's subdomain to 127.0.0.1:3000 and terminates TLS, so this stack does
+# NOT publish 80/443 itself. Configure values in a `.env` next to this file
+# (see .env.production.example).
 
 services:
   db:
@@ -42,31 +44,14 @@ services:
     volumes:
       # Persist authenticated file uploads across redeploys.
       - uploads:/app/private/uploads
-    expose:
-      - "3000"
-    networks: [web]
-
-  caddy:
-    image: caddy:2-alpine
-    restart: unless-stopped
-    depends_on:
-      - app
     ports:
-      - "80:80"
-      - "443:443"
-    environment:
-      SITE_DOMAIN: ${SITE_DOMAIN}
-    volumes:
-      - ./Caddyfile:/etc/caddy/Caddyfile:ro
-      - caddy_data:/data
-      - caddy_config:/config
+      # Listen on loopback only — the host's nginx proxies to this.
+      - "127.0.0.1:3000:3000"
     networks: [web]
 
 volumes:
   db_data:
   uploads:
-  caddy_data:
-  caddy_config:
 
 networks:
   web:
