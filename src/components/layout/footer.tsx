@@ -138,7 +138,7 @@ export function Footer() {
 
       <div className="border-t border-fg-on-dark/10">
         <div className="container-wide py-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-fg-on-dark/60">
-          <p>© {year} {siteConfig.legalName} · {t("rights")}</p>
+          <p>© {siteConfig.founded}–{year} {siteConfig.legalName} · {t("rights")}</p>
           <ul className="flex flex-wrap gap-x-5 gap-y-2">
             <li><a href="#" className="hover:text-fg-on-dark transition-colors">{t("links.mentions")}</a></li>
             <li><a href="#" className="hover:text-fg-on-dark transition-colors">{t("links.privacy")}</a></li>
