@@ -58,11 +58,14 @@ COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
 COPY --from=builder /app/public ./public
 
-# Prisma schema + CLI + engines, so the entrypoint can run `prisma db push`.
+# Prisma schema + generated client (used by the app at runtime).
 COPY --from=builder /app/prisma ./prisma
-COPY --from=builder /app/node_modules/prisma ./node_modules/prisma
-COPY --from=builder /app/node_modules/@prisma ./node_modules/@prisma
 COPY --from=builder /app/node_modules/.prisma ./node_modules/.prisma
+COPY --from=builder /app/node_modules/@prisma/client ./node_modules/@prisma/client
+
+# Isolated Prisma CLI (with its full dependency tree) for `prisma db push` at
+# startup — kept separate from the app's node_modules to avoid clashes.
+RUN npm install --prefix /opt/prisma-cli prisma@6.19.3 --omit=dev --no-audit --no-fund
 
 # Entrypoint: sync DB schema, then launch the server.
 COPY docker-entrypoint.sh ./docker-entrypoint.sh
