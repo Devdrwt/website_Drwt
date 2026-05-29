@@ -21,13 +21,8 @@ import {
 import { ProjectHeroCover } from "@/components/project-hero-cover";
 import { prisma } from "@/lib/prisma";
 
-export async function generateStaticParams() {
-  const projects = await prisma.project.findMany({
-    where: { published: true },
-    select: { slug: true },
-  });
-  return projects.map((p) => ({ slug: p.slug }));
-}
+// Rendered on demand (DB-backed). Avoids any database access during the build.
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
   params,

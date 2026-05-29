@@ -7,6 +7,8 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { prisma } from "@/lib/prisma";
 
+export const dynamic = "force-dynamic";
+
 const TYPE_LABELS: Record<string, { fr: string; en: string }> = {
   FULL_TIME: { fr: "CDI · Temps plein", en: "Full-time" },
   PART_TIME: { fr: "Temps partiel", en: "Part-time" },
