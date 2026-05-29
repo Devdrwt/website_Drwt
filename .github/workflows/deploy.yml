@@ -69,19 +69,21 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: SSH deploy
-        uses: appleboy/ssh-action@v1
-        with:
-          host: ${{ secrets.VPS_HOST }}
-          username: ${{ secrets.VPS_USER }}
-          key: ${{ secrets.VPS_SSH_KEY }}
-          port: ${{ secrets.VPS_PORT || 22 }}
-          script: |
-            set -e
-            cd ${{ secrets.VPS_APP_DIR }}
-            # Refresh compose/infra config from the repo (keeps it in sync).
-            git pull --ff-only
-            # GHCR package is public — no docker login needed to pull.
-            docker compose pull app
-            docker compose up -d
-            docker image prune -f
+      - name: Deploy over SSH
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+          VPS_PORT: ${{ secrets.VPS_PORT }}
+          VPS_APP_DIR: ${{ secrets.VPS_APP_DIR }}
+          # VPS_SSH_KEY holds the base64-encoded private key (single line —
+          # paste-safe). Generate it with: base64 -w0 ~/.ssh/github_deploy
+          SSH_KEY_B64: ${{ secrets.VPS_SSH_KEY }}
+        run: |
+          mkdir -p ~/.ssh
+          printf '%s' "$SSH_KEY_B64" | base64 -d > ~/.ssh/id_deploy
+          chmod 600 ~/.ssh/id_deploy
+          PORT="${VPS_PORT:-22}"
+          ssh-keyscan -p "$PORT" "$VPS_HOST" >> ~/.ssh/known_hosts 2>/dev/null || true
+          ssh -i ~/.ssh/id_deploy -p "$PORT" -o StrictHostKeyChecking=accept-new \
+            "$VPS_USER@$VPS_HOST" \
+            "set -e; cd '$VPS_APP_DIR'; git pull --ff-only; docker compose pull app; docker compose up -d; docker image prune -f"
