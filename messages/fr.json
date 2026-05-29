@@ -8,10 +8,12 @@
     "home": "Accueil",
     "about": "À propos",
     "services": "Services",
-    "portfolio": "Réalisations",
+    "portfolio": "Nos projets",
     "team": "Équipe",
     "careers": "Carrières",
     "blog": "Blog",
+    "news": "Actualités",
+    "documentation": "Documentation",
     "contact": "Contact",
     "clientArea": "Espace client",
     "getQuote": "Demander un devis",
@@ -214,7 +216,7 @@
       "phone": "Téléphone",
       "whatsapp": "WhatsApp",
       "hours": "Horaires",
-      "hoursValue": "Lun — Ven · 8h — 18h GMT"
+      "hoursValue": "Lun — Ven · 08h30–12h30 · 14h30–18h00"
     }
   },
   "Careers": {

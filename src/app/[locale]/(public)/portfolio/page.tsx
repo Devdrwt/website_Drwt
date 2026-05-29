@@ -1,8 +1,9 @@
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { PageHeader, GradientText } from "@/components/ui/page-header";
 import { PortfolioGrid } from "@/components/sections/portfolio-grid";
-import { CTA } from "@/components/sections/cta";
 import { prisma } from "@/lib/prisma";
+
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
   params,
@@ -47,7 +48,6 @@ export default async function PortfolioPage({
         subtitle={t("subtitle")}
       />
       <PortfolioGrid items={items} />
-      <CTA />
     </>
   );
 }

@@ -9,6 +9,8 @@ import {
   Users,
   Mail,
   FileText,
+  Newspaper,
+  BookOpen,
   LogOut,
   Building2,
 } from "lucide-react";
@@ -19,6 +21,8 @@ const items = [
   { href: "/admin",              label: "Dashboard",     Icon: LayoutDashboard },
   { href: "/admin/services",     label: "Services",      Icon: Layers },
   { href: "/admin/portfolio",    label: "Portfolio",     Icon: Briefcase },
+  { href: "/admin/articles",     label: "Actualités",    Icon: Newspaper },
+  { href: "/admin/docs",         label: "Documentation", Icon: BookOpen },
   { href: "/admin/team",         label: "Équipe",        Icon: Users },
   { href: "/admin/jobs",         label: "Offres d'emploi", Icon: FileText },
   { href: "/admin/applications", label: "Candidatures",  Icon: FileText },

@@ -349,6 +349,50 @@ model Testimonial {
   updatedAt   DateTime @updatedAt
 }
 
+// --- Actualités / blog (éditable depuis le backoffice) ---
+model Article {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  title_fr    String
+  title_en    String
+  excerpt_fr  String?  @db.Text
+  excerpt_en  String?  @db.Text
+  content_fr  String   @db.LongText
+  content_en  String   @db.LongText
+  coverImage  String?
+  category    String?
+  author      String?
+  featured    Boolean  @default(false)
+  published   Boolean  @default(true)
+  publishedAt DateTime @default(now())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([published])
+  @@index([publishedAt])
+}
+
+// --- Documentation / guides (éditable depuis le backoffice) ---
+model Doc {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  title_fr    String
+  title_en    String
+  summary_fr  String?  @db.Text
+  summary_en  String?  @db.Text
+  content_fr  String   @db.LongText
+  content_en  String   @db.LongText
+  category_fr String?
+  category_en String?
+  icon        String?
+  order       Int      @default(0)
+  published   Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([published])
+}
+
 enum JobType {
   FULL_TIME
   PART_TIME

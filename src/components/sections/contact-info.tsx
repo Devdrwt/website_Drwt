@@ -9,7 +9,7 @@ export function ContactInfo() {
   const t = useTranslations("Contact");
 
   const info = [
-    { Icon: Phone,         label: t("info.phone"),    value: siteConfig.whatsapp,        href: `tel:${siteConfig.whatsapp.replace(/\s/g, "")}` },
+    { Icon: Phone,         label: t("info.phone"),    value: siteConfig.phone,           href: `tel:${siteConfig.phone.replace(/\s/g, "")}` },
     { Icon: MessageCircle, label: t("info.whatsapp"), value: "Discussion instantanée",   href: siteConfig.whatsappUrl, accent: true },
     { Icon: Mail,          label: t("info.email"),    value: siteConfig.email,           href: `mailto:${siteConfig.email}` },
     { Icon: MapPin,        label: t("info.address"),  value: t("info.addressValue") },

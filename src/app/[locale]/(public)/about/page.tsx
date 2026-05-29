@@ -5,7 +5,6 @@ import { StatsCounter } from "@/components/sections/stats-counter";
 import { JourneyTimeline } from "@/components/sections/journey-timeline";
 import { Testimonials } from "@/components/sections/testimonials";
 import { LogosMarquee } from "@/components/sections/logos-marquee";
-import { CTA } from "@/components/sections/cta";
 
 export async function generateMetadata({
   params,
@@ -39,7 +38,6 @@ export default async function AboutPage({
       <JourneyTimeline />
       <LogosMarquee />
       <Testimonials />
-      <CTA />
     </>
   );
 }

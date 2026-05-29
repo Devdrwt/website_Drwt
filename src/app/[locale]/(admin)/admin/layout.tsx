@@ -16,10 +16,10 @@ export default async function AdminLayout({
 
   const session = await auth();
   if (!session?.user) {
-    redirect({ href: "/sign-in", locale });
+    return redirect({ href: "/sign-in", locale });
   }
   if (session.user.role !== "ADMIN") {
-    redirect({ href: "/dashboard", locale });
+    return redirect({ href: "/dashboard", locale });
   }
 
   return (

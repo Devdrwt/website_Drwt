@@ -1,21 +1,15 @@
 import { setRequestLocale, getTranslations } from "next-intl/server";
-import { ArrowRight, MapPin, Rocket, Users, Sparkles, Globe2, Heart, Scale } from "lucide-react";
+import { ArrowRight, MapPin } from "lucide-react";
 
 import { Link } from "@/i18n/navigation";
 import { PageHeader, GradientText } from "@/components/ui/page-header";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { CTA } from "@/components/sections/cta";
 import { CareersPerks } from "@/components/sections/careers-perks";
 import { CareersProcess } from "@/components/sections/careers-process";
+import { prisma } from "@/lib/prisma";
 
-const openings = [
-  { slug: "chef-projet-digital", title_fr: "Chef·fe de projet digital", title_en: "Digital Project Manager", dept: "Management", location: "Cotonou", type: "FULL_TIME" as const, remote: true },
-  { slug: "data-analyst",        title_fr: "Data Analyst",              title_en: "Data Analyst",            dept: "Data",       location: "Cotonou", type: "FULL_TIME" as const, remote: true },
-  { slug: "developpeur-mobile",  title_fr: "Développeur·se Mobile",     title_en: "Mobile Developer",        dept: "Engineering",location: "Cotonou", type: "FULL_TIME" as const, remote: true },
-  { slug: "ingenieur-logiciel",  title_fr: "Ingénieur·e Logiciel",      title_en: "Software Engineer",       dept: "Engineering",location: "Cotonou", type: "FULL_TIME" as const, remote: true },
-  { slug: "devops-engineer",     title_fr: "DevOps Engineer",           title_en: "DevOps Engineer",         dept: "Infrastructure",location: "Cotonou",type: "FULL_TIME" as const, remote: true },
-];
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
   params,
@@ -35,6 +29,11 @@ export default async function CareersPage({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "Careers" });
+
+  const openings = await prisma.jobOpening.findMany({
+    where: { published: true },
+    orderBy: { createdAt: "desc" },
+  });
 
   return (
     <>
@@ -71,7 +70,7 @@ export default async function CareersPage({
               {openings.map((o, i) => (
                 <Link
                   key={o.slug}
-                  href="/careers"
+                  href={`/careers/${o.slug}` as never}
                   className="group flex items-center justify-between gap-6 py-6 md:py-8 transition-all hover:pl-3"
                 >
                   <div className="flex items-center gap-6 min-w-0">
@@ -83,7 +82,7 @@ export default async function CareersPage({
                         {locale === "en" ? o.title_en : o.title_fr}
                       </h3>
                       <div className="mt-2 flex flex-wrap items-center gap-3 text-xs text-fg-muted">
-                        <Badge tone="neutral">{o.dept}</Badge>
+                        <Badge tone="neutral">{o.department}</Badge>
                         <span className="inline-flex items-center gap-1">
                           <MapPin className="h-3 w-3" /> {o.location}
                         </span>
@@ -101,7 +100,6 @@ export default async function CareersPage({
       </section>
 
       <CareersProcess />
-      <CTA />
     </>
   );
 }

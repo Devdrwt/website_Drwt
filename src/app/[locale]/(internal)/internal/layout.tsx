@@ -16,11 +16,11 @@ export default async function InternalLayout({
 
   const session = await auth();
   if (!session?.user) {
-    redirect({ href: "/sign-in", locale });
+    return redirect({ href: "/sign-in", locale });
   }
   const role = session.user.role;
   if (role !== "ADMIN" && role !== "STAFF") {
-    redirect({ href: "/dashboard", locale });
+    return redirect({ href: "/dashboard", locale });
   }
 
   const userName = session.user.name ?? session.user.email ?? "Membre";

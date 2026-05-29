@@ -40,7 +40,7 @@ export function Hero() {
       eyebrow: "Intelligence Artificielle · Data",
       title: (
         <>
-          La donnée et l'IA<br />
+          Les données et l'IA<br />
           <em className="not-italic text-brand-400">au service</em><br />
           de votre performance.
         </>
@@ -53,7 +53,7 @@ export function Hero() {
       eyebrow: "Cybersécurité · Infrastructure",
       title: (
         <>
-          Sécurisons<br />
+          Sécurisez<br />
           <em className="not-italic text-brand-400">votre infrastructure</em><br />
           informatique.
         </>

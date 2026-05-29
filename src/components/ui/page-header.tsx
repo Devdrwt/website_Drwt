@@ -6,7 +6,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { GradientText } from "./gradient-text";
 import { ScrollIndicator } from "../animations/scroll-indicator";
 
-type Variant = "about" | "services" | "portfolio" | "team" | "careers" | "contact";
+type Variant = "about" | "services" | "portfolio" | "team" | "careers" | "contact" | "news";
 
 const BACKGROUNDS: Record<Variant, { src: string; credit: string }> = {
   about:     { src: "/images/heroes/hero-about.jpg",     credit: "Unsplash · lZqmEhe2if4" },
@@ -15,6 +15,7 @@ const BACKGROUNDS: Record<Variant, { src: string; credit: string }> = {
   team:      { src: "/images/heroes/hero-team.jpg",      credit: "Unsplash · glRqyWJgUeY" },
   careers:   { src: "/images/heroes/hero-careers.jpg",   credit: "Unsplash · pfR18JNEMv8" },
   contact:   { src: "/images/heroes/hero-contact.jpg",   credit: "Unsplash · m2pxgGc1Yas" },
+  news:      { src: "https://images.unsplash.com/photo-1597733336794-12d05021d510?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", credit: "Unsplash" },
 };
 
 export function PageHeader({

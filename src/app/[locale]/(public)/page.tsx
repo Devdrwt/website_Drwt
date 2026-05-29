@@ -5,7 +5,10 @@ import { LogosMarquee } from "@/components/sections/logos-marquee";
 import { ServicesSection } from "@/components/sections/services";
 import { AboutPreview } from "@/components/sections/about-preview";
 import { ProcessSection } from "@/components/sections/process";
+import { LatestNews } from "@/components/sections/latest-news";
 import { Testimonials } from "@/components/sections/testimonials";
+
+export const dynamic = "force-dynamic";
 
 export default async function HomePage({
   params,
@@ -22,6 +25,7 @@ export default async function HomePage({
       <ServicesSection />
       <AboutPreview />
       <ProcessSection />
+      <LatestNews locale={locale} />
       <Testimonials />
     </>
   );

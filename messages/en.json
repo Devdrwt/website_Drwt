@@ -8,10 +8,12 @@
     "home": "Home",
     "about": "About",
     "services": "Services",
-    "portfolio": "Portfolio",
+    "portfolio": "Our projects",
     "team": "Team",
     "careers": "Careers",
     "blog": "Blog",
+    "news": "News",
+    "documentation": "Documentation",
     "contact": "Contact",
     "clientArea": "Client area",
     "getQuote": "Get a quote",
@@ -202,7 +204,7 @@
       "phone": "Phone",
       "whatsapp": "WhatsApp",
       "hours": "Hours",
-      "hoursValue": "Mon — Fri · 8am — 6pm GMT"
+      "hoursValue": "Mon — Fri · 8:30am–12:30pm · 2:30pm–6:00pm"
     }
   },
   "Careers": {

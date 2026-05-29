@@ -19,6 +19,10 @@ const buttonVariants = cva(
           "rounded-md text-foreground hover:bg-foreground/[0.06]",
         light:
           "rounded-md bg-white text-brand-700 hover:bg-white/95 shadow-sm",
+        gradient:
+          "rounded-md bg-gradient-to-r from-brand-600 to-brand-500 text-white hover:from-brand-700 hover:to-brand-600 shadow-sm",
+        soft:
+          "rounded-md bg-foreground/[0.06] text-foreground hover:bg-foreground/[0.1]",
       },
       size: {
         sm: "h-9 px-4 text-xs",

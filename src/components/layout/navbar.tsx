@@ -4,12 +4,15 @@ import { useEffect, useState } from "react";
 import { Link, usePathname } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ArrowRight, User } from "lucide-react";
+import { Menu, X, ArrowRight, User, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/cn";
 import { Logo } from "./logo";
 import { ThemeToggle } from "../theme-toggle";
 import { LocaleSwitcher } from "../locale-switcher";
 import { Button } from "../ui/button";
+
+type NavChild = { href: string; label: string };
+type NavLink = { href: string; label: string; children?: NavChild[] };
 
 export function Navbar() {
   const t = useTranslations("Nav");
@@ -27,15 +30,31 @@ export function Navbar() {
   useEffect(() => { setOpen(false); }, [pathname]);
   useEffect(() => { document.body.style.overflow = open ? "hidden" : ""; }, [open]);
 
-  const links = [
-    { href: "/",          label: t("home") },
-    { href: "/about",     label: t("about") },
-    { href: "/services",  label: t("services") },
-    { href: "/portfolio", label: t("portfolio") },
-    { href: "/team",      label: t("team") },
-    { href: "/careers",   label: t("careers") },
-    { href: "/contact",   label: t("contact") },
+  const links: NavLink[] = [
+    { href: "/", label: t("home") },
+    {
+      href: "/about",
+      label: t("about"),
+      children: [
+        { href: "/team", label: t("team") },
+        { href: "/careers", label: t("careers") },
+      ],
+    },
+    {
+      href: "/services",
+      label: t("services"),
+      children: [{ href: "/actualites", label: t("news") }],
+    },
+    {
+      href: "/portfolio",
+      label: t("portfolio"),
+      children: [{ href: "/documentation", label: t("documentation") }],
+    },
+    { href: "/contact", label: t("contact") },
   ];
+
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
     <header
@@ -52,26 +71,63 @@ export function Navbar() {
 
           <nav className="hidden lg:flex items-center gap-1">
             {links.map((link) => {
-              const active =
-                link.href === "/" ? pathname === "/" : pathname.startsWith(link.href);
+              const active = isActive(link.href);
+              const underline = active && (
+                <motion.span
+                  layoutId="nav-underline"
+                  className="absolute left-3 right-3 -bottom-0.5 h-0.5 bg-brand-500 rounded-full"
+                  transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                />
+              );
+
+              if (!link.children) {
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className={cn(
+                      "relative px-4 py-2 text-sm font-medium rounded-md transition-colors",
+                      active ? "text-brand-600 dark:text-brand-400" : "text-fg-muted hover:text-foreground"
+                    )}
+                  >
+                    {link.label}
+                    {underline}
+                  </Link>
+                );
+              }
+
               return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={cn(
-                    "relative px-4 py-2 text-sm font-medium rounded-md transition-colors",
-                    active ? "text-brand-600 dark:text-brand-400" : "text-fg-muted hover:text-foreground"
-                  )}
-                >
-                  {link.label}
-                  {active && (
-                    <motion.span
-                      layoutId="nav-underline"
-                      className="absolute left-3 right-3 -bottom-0.5 h-0.5 bg-brand-500 rounded-full"
-                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                    />
-                  )}
-                </Link>
+                <div key={link.href} className="relative group">
+                  <Link
+                    href={link.href}
+                    className={cn(
+                      "relative inline-flex items-center gap-1 px-4 py-2 text-sm font-medium rounded-md transition-colors",
+                      active ? "text-brand-600 dark:text-brand-400" : "text-fg-muted hover:text-foreground"
+                    )}
+                  >
+                    {link.label}
+                    <ChevronDown className="h-3.5 w-3.5 transition-transform group-hover:rotate-180" />
+                    {underline}
+                  </Link>
+                  <div className="absolute left-0 top-full pt-2 opacity-0 invisible translate-y-1 transition-all duration-200 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:visible group-focus-within:translate-y-0">
+                    <div className="min-w-[210px] rounded-xl border border-[var(--border)] bg-[var(--bg-elevated)] shadow-lg p-2">
+                      {link.children.map((child) => (
+                        <Link
+                          key={child.href}
+                          href={child.href}
+                          className={cn(
+                            "block px-3 py-2 rounded-lg text-sm font-medium transition-colors",
+                            isActive(child.href)
+                              ? "text-brand-600 dark:text-brand-400 bg-brand-500/10"
+                              : "text-fg-muted hover:bg-foreground/[0.05] hover:text-foreground"
+                          )}
+                        >
+                          {child.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
               );
             })}
           </nav>
@@ -121,14 +177,29 @@ export function Navbar() {
                   initial={{ opacity: 0, x: -16 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.04 }}
+                  className="border-b border-[var(--border)]"
                 >
                   <Link
                     href={link.href}
-                    className="flex items-center justify-between py-4 border-b border-[var(--border)] text-2xl font-semibold text-foreground"
+                    className="flex items-center justify-between py-4 text-2xl font-semibold text-foreground"
                   >
                     {link.label}
                     <ArrowRight className="h-5 w-5 text-fg-subtle" />
                   </Link>
+                  {link.children && (
+                    <div className="pb-4 -mt-1 flex flex-col gap-1">
+                      {link.children.map((child) => (
+                        <Link
+                          key={child.href}
+                          href={child.href}
+                          className="flex items-center gap-2 py-2 pl-4 text-base text-fg-muted hover:text-foreground"
+                        >
+                          <span className="h-px w-4 bg-fg-subtle" />
+                          {child.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
                 </motion.div>
               ))}
               <div className="mt-8 flex items-center gap-3">

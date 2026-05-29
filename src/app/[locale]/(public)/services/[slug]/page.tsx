@@ -5,7 +5,6 @@ import { ArrowLeft, CheckCircle2 } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import { PageHeader, GradientText } from "@/components/ui/page-header";
-import { CTA } from "@/components/sections/cta";
 
 const SERVICES = ["web-mobile", "custom", "transformation", "ai-data", "security"] as const;
 
@@ -87,7 +86,6 @@ export default async function ServiceDetailPage({
         </div>
       </section>
 
-      <CTA />
     </>
   );
 }

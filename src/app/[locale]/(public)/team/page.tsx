@@ -1,7 +1,6 @@
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { PageHeader, GradientText } from "@/components/ui/page-header";
 import { TeamGrid } from "@/components/sections/team-grid";
-import { CTA } from "@/components/sections/cta";
 
 export async function generateMetadata({
   params,
@@ -31,7 +30,6 @@ export default async function TeamPage({
         subtitle={t("subtitle")}
       />
       <TeamGrid />
-      <CTA />
     </>
   );
 }

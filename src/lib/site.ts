@@ -4,6 +4,7 @@ export const siteConfig = {
   tagline: "Solutions Digitales Innovantes",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   email: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "contact@drwintech.com",
+  phone: process.env.NEXT_PUBLIC_PHONE ?? "+229 01 97 17 17 96",
   whatsapp: process.env.NEXT_PUBLIC_WHATSAPP ?? "+22962707002",
   whatsappUrl: `https://wa.me/${(process.env.NEXT_PUBLIC_WHATSAPP ?? "+22962707002").replace(/[^0-9]/g, "")}`,
   city: "Cotonou",

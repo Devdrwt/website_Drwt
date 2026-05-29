@@ -14,7 +14,6 @@ import { Section, SectionHeader } from "@/components/ui/section";
 import { GradientText } from "@/components/ui/gradient-text";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { CTA } from "@/components/sections/cta";
 import {
   DoubleDiamondViz,
   DoubleDiamondPhases,
@@ -203,7 +202,6 @@ export default async function ProjectDetailPage({
         </Section>
       )}
 
-      <CTA />
     </>
   );
 }
