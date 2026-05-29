@@ -1,0 +1,34 @@
+# Dependencies & build artifacts (rebuilt inside the image)
+node_modules
+.next
+out
+build
+coverage
+
+# Local env & secrets — provided at runtime via compose
+.env
+.env.*
+!.env.example
+!.env.production.example
+
+# VCS & tooling
+.git
+.github
+.gitignore
+.vscode
+.claude
+*.tsbuildinfo
+next-env.d.ts
+
+# Docs & local-only files
+README.md
+DEPLOYMENT.md
+*.md
+
+# OS noise
+.DS_Store
+Thumbs.db
+
+# Runtime upload volume (mounted at runtime, never baked in)
+private/uploads/*
+!private/uploads/.gitkeep

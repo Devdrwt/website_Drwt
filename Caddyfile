@@ -1,0 +1,15 @@
+# Automatic HTTPS via Let's Encrypt. {$SITE_DOMAIN} is read from the compose
+# environment (set SITE_DOMAIN in your .env). Caddy obtains and renews the
+# certificate automatically as long as ports 80/443 are reachable and the DNS
+# A/AAAA record points at this VPS.
+
+{$SITE_DOMAIN} {
+	encode zstd gzip
+
+	# Forward everything to the Next.js standalone server.
+	reverse_proxy app:3000
+
+	# Long-lived caching for immutable Next.js build assets.
+	@static path /_next/static/* /videos/* /images/*
+	header @static Cache-Control "public, max-age=31536000, immutable"
+}
