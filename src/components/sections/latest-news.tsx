@@ -1,10 +1,12 @@
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 
 import { Link } from "@/i18n/navigation";
 import { Section, SectionHeader } from "@/components/ui/section";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { prisma } from "@/lib/prisma";
+import { prisma } from "@/lib/prisma"; 
+import type { Article } from "@prisma/client";
 
 export async function LatestNews({ locale }: { locale: string }) {
   const en = locale === "en";
@@ -18,7 +20,7 @@ export async function LatestNews({ locale }: { locale: string }) {
   if (articles.length === 0) return null;
 
   return (
-    <Section className="bg-[var(--bg-muted)]">
+    <Section className="bg-bg-muted">
       <div className="container-page">
         <div className="flex flex-wrap items-end justify-between gap-6 mb-14 md:mb-20">
           <SectionHeader
@@ -52,7 +54,7 @@ export async function LatestNews({ locale }: { locale: string }) {
         </div>
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {articles.map((a) => {
+          {articles.map((a: Article) => {
             const title = en ? a.title_en : a.title_fr;
             const excerpt = en ? a.excerpt_en : a.excerpt_fr;
             return (
@@ -61,13 +63,13 @@ export async function LatestNews({ locale }: { locale: string }) {
                 href={`/actualites/${a.slug}` as never}
                 className="group card-elevated overflow-hidden flex flex-col hover:border-brand-500 transition-colors"
               >
-                <div className="relative aspect-[16/10] overflow-hidden bg-foreground/5">
+                <div className="relative aspect-16/10 overflow-hidden bg-foreground/5">
                   {a.coverImage ? (
-                    <img
+                    <Image
                       src={a.coverImage}
-                      alt=""
+                      alt={title || "Article cover"}
+                      fill
                       className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                      loading="lazy"
                     />
                   ) : (
                     <div className="absolute inset-0 bg-[linear-gradient(135deg,var(--brand-600),var(--brand-900))]" />
