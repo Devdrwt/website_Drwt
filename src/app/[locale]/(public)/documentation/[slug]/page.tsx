@@ -46,7 +46,7 @@ export default async function DocPage({
 
         {category && <p className="eyebrow-line mb-4">{category}</p>}
 
-        <h1 className="heading-display text-balance text-4xl md:text-5xl text-foreground">
+        <h1 className="heading-display text-balance text-3xl md:text-4xl text-foreground">
           {title}
         </h1>
 

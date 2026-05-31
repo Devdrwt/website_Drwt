@@ -59,7 +59,7 @@ export default async function JobPage({
 
         <Badge tone="neutral">{job.department}</Badge>
 
-        <h1 className="mt-5 heading-display text-balance text-4xl md:text-5xl text-foreground">
+        <h1 className="mt-5 heading-display text-balance text-3xl md:text-4xl text-foreground">
           {title}
         </h1>
 

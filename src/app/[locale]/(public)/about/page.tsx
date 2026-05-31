@@ -3,8 +3,8 @@ import { PageHeader, GradientText } from "@/components/ui/page-header";
 import { AboutPreview } from "@/components/sections/about-preview";
 import { StatsCounter } from "@/components/sections/stats-counter";
 import { JourneyTimeline } from "@/components/sections/journey-timeline";
-import { Testimonials } from "@/components/sections/testimonials";
-import { LogosMarquee } from "@/components/sections/logos-marquee";
+import { ValuesSection } from "@/components/sections/values-section";
+import { AmbitionSection } from "@/components/sections/ambition-section";
 
 export async function generateMetadata({
   params,
@@ -36,8 +36,8 @@ export default async function AboutPage({
       <AboutPreview />
       <StatsCounter />
       <JourneyTimeline />
-      <LogosMarquee />
-      <Testimonials />
+      <ValuesSection />
+      <AmbitionSection />
     </>
   );
 }

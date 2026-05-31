@@ -52,7 +52,7 @@ export default async function CareersPage({
           <div className="flex items-end justify-between gap-6 mb-12 flex-wrap">
             <div>
               <p className="eyebrow-line mb-5">Postes ouverts</p>
-              <h2 className="heading-display text-3xl md:text-4xl lg:text-5xl text-foreground">
+              <h2 className="heading-display text-2xl md:text-3xl lg:text-4xl text-foreground">
                 {openings.length} opportunités à <span className="text-brand-600 dark:text-brand-400">saisir.</span>
               </h2>
             </div>

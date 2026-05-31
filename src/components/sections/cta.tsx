@@ -32,7 +32,7 @@ export function CTA() {
             <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-brand-300 mb-5">
               {t("title").replace(/[?!]$/, "")}
             </p>
-            <h2 className="heading-display text-4xl md:text-5xl lg:text-6xl text-fg-on-dark leading-[1.05] text-balance">
+            <h2 className="heading-display text-3xl md:text-4xl lg:text-5xl text-fg-on-dark leading-[1.05] text-balance">
               Ingénierie digitale de confiance pour les projets exigeants — tous secteurs.
             </h2>
             <p className="mt-6 max-w-2xl text-fg-on-dark/75 text-lg leading-relaxed">

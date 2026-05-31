@@ -39,7 +39,7 @@ export function CompanyInfo() {
           transition={{ duration: 0.6 }}
           className="mb-20"
         >
-          <h2 className="heading-display text-4xl md:text-5xl text-foreground mb-8">
+          <h2 className="heading-display text-3xl md:text-4xl text-foreground mb-8">
             {isEn ? "Who We Are" : "Qui sommes nous"}
           </h2>
           <div className="space-y-6 text-base md:text-lg text-fg-muted leading-relaxed max-w-4xl">

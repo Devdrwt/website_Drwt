@@ -138,7 +138,7 @@ function ProjectRow({ project, reverse }: { project: Project; reverse: boolean }
         <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-brand-600 dark:text-brand-400 mb-4">
           {project.num} — {project.category}
         </p>
-        <h3 className="heading-display text-3xl md:text-4xl lg:text-5xl text-foreground">
+        <h3 className="heading-display text-2xl md:text-3xl lg:text-4xl text-foreground">
           {project.title}
         </h3>
         <p className="mt-5 text-base text-fg-muted leading-relaxed max-w-xl">

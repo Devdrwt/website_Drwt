@@ -71,18 +71,28 @@ export function AboutPreview() {
   return (
     <Section className="bg-bg-muted">
       <div className="container-page">
-        <div className="grid gap-16 lg:grid-cols-[1fr_1.1fr] lg:items-center">
+        <div className="grid gap-16 lg:grid-cols-[1.5fr_0.7fr] lg:items-center">
           {/* Image — right on desktop, top on mobile */}
-          <div className="relative aspect-16/10 lg:aspect-5/6 overflow-hidden rounded-2xl order-1 lg:order-2">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="relative aspect-16/10 lg:aspect-5/6 overflow-hidden rounded-2xl order-1 lg:order-2">
             <Image
               src="/images/about-drw.jpg"
               alt="Drwintech"
               fill
               className="absolute inset-0 h-full w-full object-cover"
             />
-          </div>
+          </motion.div>
 
-          <div className="order-2 lg:order-1">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="order-2 lg:order-1">
             <div className="mt-12 space-y-8">
               {sections.map((section, i) => (
                 <motion.div
@@ -152,7 +162,7 @@ export function AboutPreview() {
                 </motion.div>
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </Section>

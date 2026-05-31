@@ -35,7 +35,7 @@ export default async function ArticlePage({
   const content = en ? article.content_en : article.content_fr;
 
   return (
-    <article className="pt-32 pb-20 md:pt-40 md:pb-28 bg-[var(--bg)]">
+    <article className="pt-32 pb-20 md:pt-40 md:pb-28 bg-background">
       <div className="container-page max-w-3xl">
         <Link
           href={"/actualites" as never}
@@ -55,7 +55,7 @@ export default async function ArticlePage({
           </span>
         </div>
 
-        <h1 className="heading-display text-balance text-4xl md:text-5xl text-foreground">
+        <h1 className="heading-display text-balance text-3xl md:text-4xl text-foreground">
           {title}
         </h1>
         {article.author && (
@@ -66,7 +66,7 @@ export default async function ArticlePage({
           <img
             src={article.coverImage}
             alt=""
-            className="mt-10 w-full rounded-2xl object-cover aspect-[16/9]"
+            className="mt-10 w-full rounded-2xl object-cover aspect-video"
           />
         )}
 

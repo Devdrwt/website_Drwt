@@ -113,7 +113,7 @@ function Header({ progress }: { progress?: ReturnType<typeof useScroll>["scrollY
             <span className="h-px w-12 bg-brand-400" />
             Toutes les réalisations
           </p>
-          <h2 className="heading-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-fg-on-dark text-balance">
+          <h2 className="heading-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-fg-on-dark text-balance">
             {progress ? "Faites défiler pour explorer" : "Glissez pour explorer"}<br />
             <span className="text-brand-400">nos {items.length} projets phares.</span>
           </h2>
@@ -171,7 +171,7 @@ function ProjectCard({ p, index }: { p: HItem; index: number }) {
 
       <div className="absolute inset-x-0 bottom-0 p-6 md:p-8 lg:p-10 text-white">
         <Badge tone="light" className="mb-3 md:mb-4">{p.category}</Badge>
-        <h3 className="heading-display text-3xl md:text-4xl lg:text-5xl xl:text-6xl">{p.title}</h3>
+        <h3 className="heading-display text-2xl md:text-3xl lg:text-4xl xl:text-5xl">{p.title}</h3>
         <p className="mt-2 md:mt-3 text-sm md:text-base text-white/85 max-w-md line-clamp-2">{p.client}</p>
       </div>
     </Link>
